@@ -507,7 +507,7 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
         <div class="cseg" id="corr-neg"><button data-ng="Venda" class="active">Venda</button><button data-ng="Locação">Locação</button></div>
         <div class="spacer"></div>
         <button class="btn-pdf" id="btnPdfC"><i data-lucide="file-down"></i>Exportar PDF (A4)</button></div>
-      <div class="corr-legend">Ordenado pelo <b>score ajustado</b>: a média do corretor é suavizada conforme o tamanho da carteira — carteiras pequenas são puxadas para a média geral, para que poucos imóveis bem ranqueados não distorçam o pódio. A <b>média real</b> aparece abaixo de cada nota.</div>
+      <div class="corr-legend">Ordenado pelo <b>score composto</b>, que equilibra (pesos iguais) três dimensões: <b>eficiência</b> (leads por imóvel), <b>volume</b> (total de leads) e <b>qualidade</b> (score do anúncio + desempenho). Cada corretor é avaliado pela sua posição relativa em cada uma; carteiras pequenas são suavizadas para não distorcer o pódio. Os números reais aparecem em cada linha.</div>
       <div class="corr-grid" id="corrgrid"></div>
     </div>
 
@@ -833,18 +833,33 @@ function computeCorr(neg){
     });
   });
   const G=gN?gSum/gN:0;
-  const arr=Object.values(map).map(m=>{
+  const arr=Object.values(map);
+  let tL=0,tI=0; arr.forEach(m=>{tL+=m.leads_total; tI+=m.imoveis;});
+  const Glpi=tI?tL/tI:0;
+  arr.forEach(m=>{
     m.score_medio=m._vis?+(m._sc/m._vis).toFixed(1):null;
     m.anuncio_medio=m._vis?+(m._an/m._vis).toFixed(1):null;
     m.desemp_medio=m._vis?+(m._de/m._vis).toFixed(1):null;
-    m.score_ajustado=m._vis?+((m._sc+CORR_K*G)/(m._vis+CORR_K)).toFixed(1):null; return m;});
-  arr.sort((a,b)=>(b.score_ajustado==null?-1:b.score_ajustado)-(a.score_ajustado==null?-1:a.score_ajustado));
+    m.score_ajustado=m._vis?+((m._sc+CORR_K*G)/(m._vis+CORR_K)).toFixed(1):null;
+    m.leads_imv=m.imoveis?+(m.leads_total/m.imoveis).toFixed(2):0;
+    m._efadj=(m.leads_total+CORR_K*Glpi)/(m.imoveis+CORR_K);            // eficiência (leads/imóvel) com encolhimento
+    m._scadj=m._vis?(m._sc+CORR_K*G)/(m._vis+CORR_K):G;                 // qualidade (score) com encolhimento
+    m._vol=m.leads_total;                                              // volume (total de leads)
+  });
+  // posição de 0–100 em cada dimensão (percentil) e composto com pesos iguais (33/33/33)
+  const pctOf=(key)=>{const vals=arr.map(m=>m[key]);const n=vals.length;return (x)=>n?100*(vals.filter(v=>v<=x).length-0.5)/n:0;};
+  const pe=pctOf('_efadj'),pv=pctOf('_vol'),ps=pctOf('_scadj');
+  arr.forEach(m=>{
+    m.p_ef=Math.round(pe(m._efadj)); m.p_vol=Math.round(pv(m._vol)); m.p_sc=Math.round(ps(m._scadj));
+    m.composto=+(((m.p_ef+m.p_vol+m.p_sc)/3).toFixed(1));
+  });
+  arr.sort((a,b)=>b.composto-a.composto);
   return arr;
 }
 function renderCorr(){
   const CORRL=computeCorr(corrNeg);
   document.getElementById('ccount').textContent=CORRL.length;
-  const head=`<div class="corr-row head"><div>#</div><div>Corretor</div><div>Score ajustado</div><div>Imóveis</div><div class="corr-mhide">Leads</div><div class="corr-hide">Distribuição da carteira</div></div>`;
+  const head=`<div class="corr-row head"><div>#</div><div>Corretor</div><div>Score composto</div><div>Imóveis</div><div class="corr-mhide">Leads</div><div class="corr-hide">Distribuição da carteira</div></div>`;
   const rows=CORRL.map((c,i)=>{
     const tot=c.imoveis||1;
     const seg=(n,cls)=>n>0?`<span class="${cls}" style="width:${n/tot*100}%" title="${n}"></span>`:'';
@@ -852,7 +867,7 @@ function renderCorr(){
     return `<div class="corr-row" data-corr="${c.corretor}">
       <div class="corr-rk ${i<3?'top':''}">${i+1}</div>
       <div><div class="corr-nm">${c.corretor}<small>anúncio ${fmt1(c.anuncio_medio)} · desemp. ${fmt1(c.desemp_medio)}</small></div></div>
-      <div class="corr-sc" style="color:${c.score_ajustado==null?'var(--g300)':scoreColor(c.score_ajustado)}">${fmt1(c.score_ajustado)}<small>média real ${fmt1(c.score_medio)}</small></div>
+      <div class="corr-sc" style="color:${scoreColor(c.composto)}">${fmt1(c.composto)}<small>${(c.leads_imv).toFixed(2).replace('.',',')} lds/imv · score ${fmt1(c.score_medio)}</small></div>
       <div class="corr-stat">${c.imoveis}<small>imóveis</small></div>
       <div class="corr-stat corr-mhide">${fmt(c.leads_total)}<small>leads</small></div>
       <div class="corr-hide">${dist}</div></div>`;
