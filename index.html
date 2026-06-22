@@ -279,18 +279,21 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
 .im-link{display:inline-flex;vertical-align:middle;margin-left:6px;color:var(--g400);transition:.12s}
 .im-link i{width:13px;height:13px}
 .im-link:hover{color:var(--orange-600)}
+.orep-opt{display:flex;align-items:flex-start;gap:8px;margin:2px 0 12px;font-size:12.5px;color:var(--g600);line-height:1.35;cursor:pointer}
+.orep-opt input{margin-top:1px;width:15px;height:15px;accent-color:var(--orange);flex:none;cursor:pointer}
+.orep-opt b{color:var(--g800)}
 
 /* ---------- RELATÓRIO PROPRIETÁRIO (A4 retrato, só impressão) ---------- */
 #owner-report{display:none}
 @page owner{size:A4 portrait;margin:0}
-.orep{font-family:"Atkinson Hyperlegible",sans-serif;color:var(--navy);background:#fff;width:210mm;page:owner}
+.orep{font-family:"Atkinson Hyperlegible",sans-serif;color:var(--navy);background:#fff;width:210mm;min-height:296mm;display:flex;flex-direction:column;page:owner}
 .orep *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .orep-header{background:var(--navy);color:#fff;padding:5.5mm 14mm 4mm;display:flex;align-items:flex-start;justify-content:space-between}
 .orep-header img{height:11mm}
 .orep-header .rt{text-align:right}
 .orep-header .rt .t1{font-family:"Oswald";text-transform:uppercase;letter-spacing:.12em;font-size:10pt;color:var(--orange);font-weight:600}
 .orep-header .rt .t2{font-size:8pt;color:#b9b5d6;margin-top:1mm}
-.orep-body{padding:3mm 14mm 0}
+.orep-body{flex:1 0 auto;padding:3mm 14mm 0}
 .orep-hero{border-bottom:2px solid var(--g200);padding-bottom:2.4mm;margin-bottom:2.6mm}
 .orep-hero .ref{font-family:"Oswald";font-size:18pt;font-weight:600;line-height:1}
 .orep-hero .ad{font-size:10.5pt;color:var(--g600);margin-top:1.5mm}
@@ -778,6 +781,7 @@ function openDrawer(ref){
      </div></div>
    <div class="dr-body">
      <a class="btn-anuncio" href="${imovelUrl(d.ref)}" target="_blank" rel="noopener"><i data-lucide="external-link"></i>Ver anúncio no site</a>
+     <label class="orep-opt"><input type="checkbox" id="incPreco" checked><span>Incluir a <b>leitura de valor</b> (mediana de similares) no relatório</span></label>
      <button class="btn-owner" onclick="openOwnerReport('${d.ref}')"><i data-lucide="file-text"></i>Relatório para o proprietário (PDF)</button>
      <div class="dr-sec">Como melhorar este imóvel</div>${checklist(d)}
      ${d.score_desempenho!=null?`<div class="dr-sec">Composição do desempenho <span class="dr-rel">relativo aos semelhantes</span></div>
@@ -1178,6 +1182,7 @@ function ownerPeers(d){
 }
 function openOwnerReport(ref){
   const d=DATA.find(x=>x.ref==ref);if(!d)return;
+  const elInc=document.getElementById('incPreco');const incPreco=elInc?elInc.checked:true;
   const peer=ownerPeers(d),dias=d.dias_pauta;
   const chans=[];
   if(d.in_zap)chans.push(['ZAP Imóveis / OLX',d.zap_views,d.zap_contatos]);
@@ -1227,7 +1232,7 @@ function openOwnerReport(ref){
       <div class="orep-block"><div class="orep-sec">Desempenho por canal</div>
         <table class="orep-ptable"><thead><tr><th>Canal</th><th class="r">Visualizações</th><th class="r">Interessados</th></tr></thead>
         <tbody>${chanRows}<tr class="tot"><td>Total</td><td class="r">${fmt(d.total_views||0)}</td><td class="r">${fmt(d.total_leads||0)}</td></tr></tbody></table></div>
-      ${cmpHtml}${priceHtml}
+      ${cmpHtml}${incPreco?priceHtml:''}
     </div>
     <div class="orep-footer"><div class="fc"><b>ZELT Imóveis</b><br>Corretor responsável: ${caps}</div><div class="fr">Gerado pelo Painel de Desempenho ZELT<br>${hoje}</div></div>
   </div>`;
