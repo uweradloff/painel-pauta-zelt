@@ -46,6 +46,8 @@ header .hdate{font-size:14px;color:var(--navy-300)}
 .nav button.nav-camp i[data-lucide]{width:15px;height:15px;margin-right:5px}
 .nav button.nav-camp:hover{color:#fff;background:rgba(242,193,78,.28)}
 .nav button.nav-camp.active{color:var(--navy);background:var(--orange);border-color:var(--orange)}
+#cartgrid .corr-row{grid-template-columns:30px 1fr 78px 120px 86px 90px 1fr}
+#cartgrid .cart-sort{cursor:pointer;user-select:none}#cartgrid .cart-sort:hover{color:var(--navy)}#cartgrid .cart-sort.on{color:var(--orange)}
 
 /* ---------- KPI BAND ---------- */
 .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--g200);border-bottom:1px solid var(--g200)}
@@ -453,6 +455,7 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
   .mobile-filter{display:inline-flex}
   .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .corr-row{grid-template-columns:28px 1fr 74px 60px 60px;gap:10px}
+  #cartgrid .corr-row{grid-template-columns:28px 1fr 62px 74px 58px 60px;gap:10px}
   .corr-row .corr-hide{display:none}
   .rk-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 }
@@ -480,6 +483,7 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
   .rk-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px}
   .rk-tabs button{flex-shrink:0;white-space:nowrap}
   .corr-row{grid-template-columns:22px 1fr 50px 46px;gap:8px;padding:11px 12px}
+  #cartgrid .corr-row{grid-template-columns:22px 1fr 46px 52px 46px;gap:8px;padding:11px 12px}
   .corr-row .corr-mhide{display:none}
   .corr-nm{font-size:15px}.corr-nm small{font-size:11.5px}
   .corr-sc{font-size:22px}
@@ -495,7 +499,6 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
   <div class="htitle">PAINEL DE <b>PAUTA</b></div>
   <nav class="nav">
     <button data-view="pauta" class="active">Pauta</button>
-    <button data-view="corretores">Corretores</button>
     <button data-view="carteira">Qualidade</button>
     <button data-view="rankings">Rankings</button>
     <button data-view="metaads">Meta Ads</button>
@@ -566,16 +569,6 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
     </div>
 
     <!-- ====== VIEW CORRETORES ====== -->
-    <div class="view" id="view-corretores">
-      <div class="toolbar"><div class="count">Ranking de <b id="ccount">0</b> corretores</div>
-        <div class="cseg" id="corr-neg"><button data-ng="Venda" class="active">Venda</button><button data-ng="Locação">Locação</button></div>
-        <div class="spacer"></div>
-        <button class="btn-pdf" id="btnPdfC"><i data-lucide="file-down"></i>Exportar PDF (A4)</button></div>
-      <div class="corr-legend">Ordenado pelo <b>score composto</b>, que equilibra (pesos iguais) três dimensões: <b>eficiência</b> (leads por imóvel), <b>volume</b> (total de leads) e <b>qualidade</b> (score do anúncio + desempenho). Cada corretor é avaliado pela sua posição relativa em cada uma; carteiras pequenas são suavizadas para não distorcer o pódio. Os números reais aparecem em cada linha.</div>
-      <div class="corr-grid" id="corrgrid"></div>
-    </div>
-
-    <!-- ====== VIEW QUALIDADE DE CARTEIRA ====== -->
     <div class="view" id="view-carteira">
       <div class="toolbar"><div class="count">Qualidade da carteira · <b id="cartcount">0</b> corretores</div>
         <div class="cseg" id="cart-neg"><button data-ng="Venda" class="active">Venda</button><button data-ng="Locação">Locação</button><button data-ng="">Todos</button></div>
@@ -1206,6 +1199,8 @@ function renderCorr(){
 
 /* ---------- qualidade de carteira ---------- */
 let cartNeg='Venda';
+let cartSort={key:'qual',dir:-1};
+const CART_VAL={qual:c=>c.desemp_medio??-1,leads:c=>c.leads_total||0,zero:c=>c.pct_zero??-1,imoveis:c=>c.imoveis||0};
 const CART_MIN=5;   // mínimo de imóveis avaliados p/ entrar no ranking principal
 function computeCart(neg){
   const map={};
@@ -1230,8 +1225,10 @@ function computeCart(neg){
     m.pct_zero=m.pub?Math.round(100*m.zero/m.pub):null;
   });
   // ranking principal: carteiras com dados suficientes, por desempenho real (desc)
-  const main=arr.filter(m=>m._vis>=CART_MIN).sort((a,b)=>(b.desemp_medio||0)-(a.desemp_medio||0));
-  const small=arr.filter(m=>m._vis<CART_MIN).sort((a,b)=>(b.desemp_medio??-1)-(a.desemp_medio??-1));
+  const val=CART_VAL[cartSort.key]||CART_VAL.qual;
+  const cmp=(a,b)=>(val(a)-val(b))*cartSort.dir;
+  const main=arr.filter(m=>m._vis>=CART_MIN).sort(cmp);
+  const small=arr.filter(m=>m._vis<CART_MIN).sort(cmp);
   return {main,small};
 }
 function cartRow(c,rk){
@@ -1240,8 +1237,9 @@ function cartRow(c,rk){
   const dist=`<div class="dist">${seg(c.excelente,'d-ex')}${seg(c.bom,'d-bo')}${seg(c.regular,'d-re')}${seg(c.fraco,'d-fr')}${seg(c.fora_divulg,'d-fo')}</div>`;
   const q=c.desemp_medio;
   return `<div class="corr-row" data-corr="${c.corretor}">
-    <div class="corr-rk ${rk&&rk<=3?'top':''}">${rk||'·'}</div>
-    <div><div class="corr-nm">${c.corretor}<small>${c.imoveis} imóveis${c._vis<CART_MIN?' · leitura menos confiável':' no segmento'}</small></div></div>
+    <div class="corr-rk ${rk&&rk<=3&&cartSort.key=='qual'?'top':''}">${rk||'·'}</div>
+    <div><div class="corr-nm">${c.corretor}${c._vis<CART_MIN?'<small>leitura menos confiável</small>':''}</div></div>
+    <div class="corr-stat">${c.imoveis}<small>imóveis</small></div>
     <div class="corr-sc" style="color:${q==null?'var(--g300)':scoreColor(q)}">${q==null?'—':fmt1(q)}<small>desempenho ajustado</small></div>
     <div class="corr-stat">${fmt(c.leads_total)}<small>${(c.leads_imv).toFixed(2).replace(".",",")} / imóvel</small></div>
     <div class="corr-stat corr-mhide">${c.pct_zero==null?'—':'<span style=\'color:'+(c.pct_zero>=40?'#c0392b':c.pct_zero>=20?'#d68910':'#1a8f4a')+'\'>'+c.pct_zero+'%</span>'}<small>${c.zero||0} sem lead</small></div>
@@ -1250,10 +1248,13 @@ function cartRow(c,rk){
 function renderCart(){
   const {main,small}=computeCart(cartNeg);
   document.getElementById('cartcount').textContent=main.length+small.length;
-  const head=`<div class="corr-row head"><div>#</div><div>Corretor</div><div>Qualidade</div><div>Leads totais</div><div class="corr-mhide">Sem procura</div><div class="corr-hide">Distribuição da carteira</div></div>`;
+  const ar=k=>cartSort.key==k?(cartSort.dir<0?' ↓':' ↑'):'';
+  const th=(k,l,cls)=>`<div class="${cls||''} cart-sort${cartSort.key==k?' on':''}" data-sort="${k}">${l}${ar(k)}</div>`;
+  const head=`<div class="corr-row head"><div>#</div><div>Corretor</div>${th('imoveis','Carteira')}${th('qual','Qualidade')}${th('leads','Leads totais')}${th('zero','Sem procura','corr-mhide')}<div class="corr-hide">Distribuição da carteira</div></div>`;
   let html=head+main.map((c,i)=>cartRow(c,i+1)).join('');
-  if(small.length) html+=`<div class="corr-row head" style="background:var(--g100);color:var(--g600)"><div></div><div>Carteiras pequenas (menos de ${CART_MIN} imóveis — leitura menos confiável)</div><div></div><div></div><div class="corr-mhide"></div><div class="corr-hide"></div></div>`+small.map(c=>cartRow(c,null)).join('');
+  if(small.length) html+=`<div class="corr-row head" style="background:var(--g100);color:var(--g600)"><div></div><div>Carteiras pequenas (menos de ${CART_MIN} imóveis — leitura menos confiável)</div><div></div><div></div><div></div><div class="corr-mhide"></div><div class="corr-hide"></div></div>`+small.map(c=>cartRow(c,null)).join('');
   document.getElementById('cartgrid').innerHTML=html;
+  document.querySelectorAll('#cartgrid .cart-sort').forEach(el=>el.onclick=()=>{const k=el.dataset.sort;if(cartSort.key==k)cartSort.dir*=-1;else cartSort={key:k,dir:-1};renderCart();});
 }
 
 /* ---------- rankings ---------- */
@@ -1516,7 +1517,7 @@ function setView(v){state.view=v;
   document.querySelector('.wrap').classList.toggle('nofilter', noFilter);
   document.getElementById('mobToggle').style.display = (v=='pauta') ? '' : 'none';
   document.getElementById('kpis').style.display = (v=='metaads'||v=='conversao'||v=='criterios'||v=='atualizacoes') ? 'none' : '';
-  if(v=='corretores')renderCorr(); if(v=='carteira')renderCart(); if(v=='rankings')renderRk();
+  if(v=='carteira')renderCart(); if(v=='rankings')renderRk();
   if(v=='metaads')renderMeta();
   if(v=='atualizacoes')renderAtualiz();
   if(v=='campanha')renderCampanha();
@@ -1548,13 +1549,11 @@ document.getElementById('thead').addEventListener('click',e=>{const th=e.target.
   const k=th.dataset.k;if(state.sort.col==k)state.sort.dir*=-1;else state.sort={col:k,dir:(k=='ref'||k=='negocio'||k=='classificacao'||k=='captadores_raw')?1:-1};renderTable();});
 document.getElementById('tbody').addEventListener('click',e=>{const tr=e.target.closest('tr');if(tr&&tr.dataset.ref)openDrawer(tr.dataset.ref);});
 document.getElementById('cardlist').addEventListener('click',e=>{const c=e.target.closest('[data-ref]');if(c)openDrawer(c.dataset.ref);});
-document.getElementById('corrgrid').addEventListener('click',e=>{const r=e.target.closest('[data-corr]');if(!r)return;
+document.getElementById('cartgrid').addEventListener('click',e=>{const r=e.target.closest('[data-corr]');if(!r)return;
   setView('pauta');state.f.corretor=r.dataset.corr;document.getElementById('f-corretor').value=r.dataset.corr;
-  state.f.negocio=corrNeg;document.getElementById('f-negocio').value=corrNeg;setPriceBounds(corrNeg);renderTable();window.scrollTo(0,0);});
+  state.f.negocio=cartNeg;document.getElementById('f-negocio').value=cartNeg;setPriceBounds(cartNeg);renderTable();window.scrollTo(0,0);});
 document.getElementById('rkgrid').addEventListener('click',e=>{const c=e.target.closest('[data-ref]');if(c)openDrawer(c.dataset.ref);});
 document.getElementById('rktabs').addEventListener('click',e=>{const b=e.target.closest('[data-rk]');if(!b)return;rkActive=b.dataset.rk;renderRk();});
-document.getElementById('corr-neg').addEventListener('click',e=>{const b=e.target.closest('[data-ng]');if(!b)return;
-  corrNeg=b.dataset.ng;[...e.currentTarget.children].forEach(x=>x.classList.toggle('active',x==b));renderCorr();});
 document.getElementById('cart-neg').addEventListener('click',e=>{const b=e.target.closest('[data-ng]');if(!b)return;
   cartNeg=b.dataset.ng;[...e.currentTarget.children].forEach(x=>x.classList.toggle('active',x==b));renderCart();});
 document.getElementById('rk-neg').addEventListener('click',e=>{const b=e.target.closest('[data-ng]');if(!b)return;
@@ -1563,7 +1562,6 @@ document.getElementById('drawerbg').onclick=closeDrawer;
 document.addEventListener('keydown',e=>{if(e.key=='Escape'){closeDrawer();closeSidebar();}});
 function doPrint(){buildPrintHead();window.print();}
 document.getElementById('btnPdf').onclick=doPrint;
-document.getElementById('btnPdfC').onclick=()=>window.print();
 document.getElementById('btnPdfCart').onclick=()=>window.print();
 /* ---- painel de filtros no celular ---- */
 function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sidebarbg').classList.add('open');}
