@@ -919,6 +919,7 @@ const QUICK=[
  {id:'desc3000',ic:'alert-triangle',t:'Descrição +3.000',f:d=>d.zap_desc!=null && d.zap_desc>3000},
  {id:'altovalor',ic:'banknote',t:'Alto valor, zero lead',f:d=>d.negocio=='Venda' && d.valor>=1500000 && (d.total_leads||0)==0 && !d.invisivel},
  {id:'parados',ic:'clock',t:'Parados +180d',f:d=>d.dias_pauta>180 && d.score_final!=null && d.score_final<40},
+ {id:'semlead300',ic:'search-x',t:'Sem lead · +300 dias',f:d=>(d.total_leads||0)==0 && d.dias_pauta>300 && !d.invisivel},
 ];
 function renderQuick(){
   document.getElementById('quickbar').innerHTML=QUICK.map(q=>{
