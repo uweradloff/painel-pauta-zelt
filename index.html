@@ -818,6 +818,31 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
       #view-campanha .camp-chip{font-size:11.5px;background:var(--g100);border-radius:5px;padding:2px 7px;color:var(--g700)}
       #view-campanha .prizeb{font-size:11px;background:var(--orange);color:#fff;border-radius:20px;padding:2px 9px;font-weight:600;margin-left:8px}
       #view-campanha .camp-empty{padding:40px 24px;text-align:center;color:var(--g600);background:#fff;border:1px dashed var(--g300);border-radius:var(--r-lg);font-size:14.5px;line-height:1.5}
+      #view-campanha .camp-extra{background:#fff;border:1px solid var(--g200);border-left:3px solid var(--orange);border-radius:var(--r-md);padding:11px 14px;margin:-8px 0 20px;font-size:13.5px;color:var(--g700);display:flex;align-items:flex-start;gap:9px}
+      #view-campanha .camp-extra i[data-lucide]{width:16px;height:16px;color:var(--orange);flex:none;margin-top:2px}
+      #view-campanha .camp-champ{background:linear-gradient(120deg,rgba(242,193,78,.16),rgba(242,193,78,.03));border:1px solid rgba(242,193,78,.55);border-radius:var(--r-lg);padding:14px 18px;margin-bottom:16px}
+      #view-campanha .ccb-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+      #view-campanha .ccb-list{display:flex;flex-direction:column;gap:6px}
+      #view-campanha .ccb-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--g200);border-radius:var(--r-md);padding:9px 13px}
+      #view-campanha .ccb-row.gold{border-color:rgba(201,162,39,.5);background:linear-gradient(90deg,rgba(201,162,39,.08),#fff)}
+      #view-campanha .ccb-rk{font-family:"Oswald";font-weight:600;font-size:16px;width:26px;flex:none;text-align:center;color:var(--g500)}
+      #view-campanha .ccb-row.gold .ccb-rk{color:#c9a227}#view-campanha .ccb-row.silver .ccb-rk{color:#9a9a9a}#view-campanha .ccb-row.bronze .ccb-rk{color:#b06b3a}
+      #view-campanha .ccb-nm{flex:1;cursor:pointer}#view-campanha .ccb-nm b{color:var(--navy)}
+      #view-campanha .ccb-cnt{font-size:12px;color:var(--g500);margin-left:4px}#view-campanha .ccb-nm:hover .ccb-cnt{color:var(--orange)}
+      #view-campanha .ccb-pct{font-family:"Oswald";font-weight:600;font-size:21px;color:#b8860b;flex:none}
+      #view-campanha .ccb-items{display:flex;flex-direction:column;gap:5px;margin:2px 0 4px 38px}
+      #view-campanha .ccb-item{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#fff;border:1px solid var(--g150,var(--g200));border-radius:6px;padding:6px 10px;font-size:12.5px;cursor:pointer}
+      #view-campanha .ccb-item:hover{border-color:var(--orange)}
+      #view-campanha .ccb-ref{font-family:"Oswald";font-weight:600;color:var(--navy)}
+      #view-campanha .ccb-loc{color:var(--g500)}
+      #view-campanha .ccb-price{color:#1a8f4a;margin-left:auto;font-weight:600}
+      #view-campanha .cc-ico{width:40px;height:40px;flex:none;border-radius:50%;background:#f2c14e;color:#fff;display:flex;align-items:center;justify-content:center}
+      #view-campanha .cc-ico i[data-lucide]{width:22px;height:22px}
+      #view-campanha .cc-body{flex:1}
+      #view-campanha .cc-tit{font-family:"Oswald";text-transform:uppercase;letter-spacing:.05em;font-size:12px;color:#b8860b}
+      #view-campanha .cc-name{font-family:"Oswald";font-weight:600;font-size:20px;color:var(--navy)}
+      #view-campanha .cc-sub{font-size:12.5px;color:var(--g600);margin-top:2px}
+      #view-campanha .cc-pct{font-family:"Oswald";font-weight:600;font-size:30px;color:#b8860b;flex:none}
       #view-campanha .cexp-camp{padding:2px 4px 10px;background:var(--g50)}
       #view-campanha .cexp-grid{display:flex;flex-direction:column;gap:7px}
       #view-campanha .cexp-item{display:flex;align-items:center;gap:12px;justify-content:space-between;background:#fff;border:1px solid var(--g200);border-radius:var(--r-md);padding:9px 12px;flex-wrap:wrap}
@@ -828,7 +853,7 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
       </style>
       <div class="camp">
         <div class="camp-hero"><h2>Campanha de Pontuação</h2>
-          <p>Ranking dos corretores que mais trabalharam a pauta desde o <b>marco zero (<span id="camp-since"></span>)</b>. <b>Premiação para os 3 primeiros lugares.</b></p></div>
+          <p>Ranking dos corretores que mais trabalharam a pauta desde o <b>marco zero (<span id="camp-since"></span>)</b>. <b>Premiação para os 3 primeiros lugares</b>, mais o <b>Campeão da Redução</b> (categoria à parte).</p></div>
         <div class="camp-rules">
           <div class="cr-card"><h3>Como pontua</h3><div class="cr-pts">
             <div class="cr-pt"><span class="cr-badge">+10</span> Baixar o valor do imóvel</div>
@@ -847,6 +872,7 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
               <li class="cr-no">✕ Aumento de fotos que <b>não passou</b> de 20</li>
             </ul></div>
         </div>
+        <div class="camp-extra"><i data-lucide="crown"></i><div><b>Prêmio extra (fora da pontuação): Campeão da Redução</b> — corretor com o maior <b>percentual da carteira de venda com preço reduzido</b>. Ex.: baixar 10 de 100 imóveis = 10%. Mínimo de 10 imóveis na carteira para concorrer.</div></div>
         <div id="camp-body"></div>
       </div>
     </div>
@@ -1310,6 +1336,8 @@ function buildPrintHead(){
 /* ---------- campanha de pontuação ---------- */
 let campExp=null;
 function campToggle(n){campExp=campExp==n?null:n;renderCampanha();}
+let redExp=null;
+function redToggle(n){redExp=redExp==n?null:n;renderCampanha();}
 function renderCampanha(){
   const C=(DIFF&&DIFF.campanha)||{corretores:[],desde:''};
   const sinceEl=document.getElementById('camp-since'); if(sinceEl)sinceEl.textContent=C.desde||'—';
@@ -1318,6 +1346,20 @@ function renderCampanha(){
   const esc=n=>n.replace(/'/g,"\\'");
   const isCasa=n=>/^(zelt|zlt)\b/i.test(n);            // conta da imobiliária (não compete)
   const brokers=L.filter(c=>!isCasa(c.nome)), casa=L.filter(c=>isCasa(c.nome));
+  // Campeão da Redução: top-3 por % da carteira de venda com preço baixado
+  const MIN_CART_RED=10;
+  const vendaCart={}; DATA.forEach(d=>{if(d.negocio!='Venda')return;(d.corretores||[]).forEach(cc=>vendaCart[cc]=(vendaCart[cc]||0)+1);});
+  const priceTxt={}; DIFF.mudancas.forEach(m=>{const t=m.tags.find(x=>x.k=='preco'&&x.dir=='down');if(t)priceTxt[m.ref]=t.txt;});
+  const redList=brokers.map(c=>{const cv=vendaCart[c.nome]||0;const imvs=c.imoveis.filter(m=>m.reasons.some(r=>/Baixou/.test(r)));
+      return {nome:c.nome,cv,nv:imvs.length,pct:cv?imvs.length/cv*100:0,imoveis:imvs};})
+    .filter(x=>x.cv>=MIN_CART_RED&&x.nv>0).sort((a,b)=>b.pct-a.pct||b.nv-a.nv).slice(0,3);
+  let champHtml='';
+  if(redList.length){const med=['gold','silver','bronze'];
+    champHtml=`<div class="camp-champ"><div class="ccb-head"><div class="cc-ico"><i data-lucide="crown"></i></div><div><div class="cc-tit">Campeão da Redução — top 3</div><div class="cc-sub">Maior % da carteira de venda com preço reduzido. Clique no corretor para ver os imóveis.</div></div></div><div class="ccb-list">`+
+      redList.map((c,i)=>{const open=redExp==c.nome;
+        let r=`<div class="ccb-row ${med[i]}"><div class="ccb-rk">${i+1}º</div><div class="ccb-nm" onclick="redToggle('${esc(c.nome)}')"><b>${c.nome}</b><span class="ccb-cnt">${c.nv} de ${c.cv} imóveis · ${open?'ocultar':'ver imóveis'}</span></div><div class="ccb-pct">${fmt1(c.pct)}%</div></div>`;
+        if(open)r+=`<div class="ccb-items">`+c.imoveis.map(m=>`<div class="ccb-item" onclick="openDrawer('${m.ref}')"><span class="ccb-ref">${m.ref}</span><span class="ccb-loc">${m.tipo} · ${m.bairro}</span><span class="ccb-price">${priceTxt[m.ref]||'preço reduzido'}</span></div>`).join('')+`</div>`;
+        return r;}).join('')+`</div></div>`;}
   function campRow(c,rk){
     const casaRow=(rk==null);
     const cls=(!casaRow&&rk<=3)?('top'+rk+' prize'):(casaRow?'camp-casa':'');
@@ -1337,7 +1379,8 @@ function renderCampanha(){
     rows+='<tr class="camp-sep"><td colspan="4" style="background:var(--g100);color:var(--g600);font-size:12.5px;padding:9px 13px;font-style:italic">Contabilizado à parte — conta da imobiliária, fora da disputa por colocação</td></tr>';
     rows+=casa.map(c=>campRow(c,null)).join('');
   }
-  body.innerHTML=`<table class="camp-tbl"><thead><tr><th>#</th><th>Corretor</th><th class="n">Pontos</th><th class="hidem">Detalhe</th></tr></thead><tbody>${rows}</tbody></table>`;
+  body.innerHTML=champHtml+`<table class="camp-tbl"><thead><tr><th>#</th><th>Corretor</th><th class="n">Pontos</th><th class="hidem">Detalhe</th></tr></thead><tbody>${rows}</tbody></table>`;
+  lucide.createIcons();
 }
 /* ---------- events ---------- */
 /* ---------- atualizações (diff entre as duas últimas cargas) ---------- */
@@ -1411,7 +1454,7 @@ function renderAtualiz(){
   else if(updSeg=='mudancas')body.innerHTML=updMud();
   else if(updSeg=='entrou')body.innerHTML=updList(CD.entrou_list,true);
   else body.innerHTML=updList(CD.saiu_list,false);
-  if(window.lucide)lucide.createIcons();
+  lucide.createIcons();
 }
 function renderFbar(){
   const fb=document.getElementById('upd-filterbar');
@@ -1483,6 +1526,7 @@ function updMud(){
 function updList(arr,clickable){
   const rows=arr.map(x=>`<tr ${clickable?`style="cursor:pointer" onclick="openDrawer('${x.ref}')"`:''}><td class="cname">${x.ref}</td><td>${x.captador}</td><td>${x.tipo}</td><td class="hidem">${x.bairro}</td><td>${x.negocio}</td><td class="n">${x.valor?('R$ '+x.valor.toLocaleString('pt-BR')):'—'}</td></tr>`).join('');
   return `<div style="font-size:13px;color:var(--g500);margin-bottom:10px">${arr.length} imóvel(is)</div><table class="upd-tbl"><thead><tr><th>Imóvel</th><th>Corretor</th><th>Tipo</th><th class="hidem">Bairro</th><th>Negócio</th><th class="n">Valor</th></tr></thead><tbody>${rows}</tbody></table>`;
+  if(window.lucide)lucide.createIcons();
 }
 function openUpdReport(){
   const D=DIFF;
@@ -1744,6 +1788,7 @@ function convRank(){
     return `<tr onclick="openDrawer('${x.ref}')"><td class="rref">${x.ref}</td><td>${x.tipo}<span style="color:var(--g500)"> · ${x.bairro||''}</span></td><td class="hidem">${cfg}</td><td class="n hidem">${val}</td><td class="n">${x.views.toLocaleString('pt-BR')}</td><td class="n">${x.leads}</td><td class="n">${x.conv.toFixed(2).replace('.',',')}%</td><td class="n"><span class="cvpill">${x.mult.toFixed(1).replace('.',',')}×</span></td></tr>`;
   }).join('');
   return `<div style="font-size:13px;color:var(--g500);margin-bottom:10px">Top ${shown.length} de ${list.length} — ordenados por quantas vezes convertem <b>acima da média da própria faixa de valor</b> (mín. 120 visualizações)</div><table class="conv-tbl"><thead><tr><th>Imóvel</th><th>Tipo · Bairro</th><th class="hidem">Config.</th><th class="n hidem">Valor</th><th class="n">Views</th><th class="n">Leads</th><th class="n">Conversão</th><th class="n">vs. faixa</th></tr></thead><tbody>${rows}</tbody></table>`;
+  if(window.lucide)lucide.createIcons();
 }
 
 /* ============ RELATÓRIO DO PROPRIETÁRIO ============ */
