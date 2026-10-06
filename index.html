@@ -1292,6 +1292,7 @@ let rkNeg='';
 const RKTABS=[
  {id:'leads',t:'Mais convertem',m:d=>d.total_leads||0,fmt:v=>fmt(v)+' leads'},
  {id:'views',t:'Mais visualizações',m:d=>d.total_views||0,fmt:v=>fmt(v)+' views'},
+ {id:'conv',t:'Melhor conversão',m:d=>((d.total_views||0)>=300&&(d.total_leads||0)>0)?(d.total_leads/d.total_views*100):0,fmt:v=>v.toFixed(2).replace('.',',')+'% · 1 lead a cada '+Math.round(100/v)+' views',note:'Leads ÷ visualizações. Só imóveis com 300+ visualizações entram, para não premiar amostra pequena.'},
  {id:'zap',t:'Top ZAP',m:d=>d.zap_contatos||0,fmt:v=>fmt(v)+' contatos'},
  {id:'sc',t:'Top Imóveis SC',m:d=>d.sc_leads||0,fmt:v=>fmt(v)+' contatos'},
  {id:'site',t:'Top Site',m:d=>d.site_leads||0,fmt:v=>fmt(v)+' leads'},
@@ -1304,14 +1305,15 @@ function renderRk(){
   const pool=rkNeg?DATA.filter(d=>d.negocio==rkNeg):DATA;
   const top=pool.filter(d=>t.m(d)>0).sort((a,b)=>t.m(b)-t.m(a)).slice(0,24);
   const max=top.length?t.m(top[0]):1;
-  document.getElementById('rkgrid').innerHTML=top.length?top.map((d,i)=>`
+  const note=t.note?`<div style="grid-column:1/-1;font-size:12.5px;color:var(--g600);background:#fff;border:1px solid var(--g200);border-left:3px solid var(--orange);border-radius:var(--r-md);padding:8px 12px">${t.note}</div>`:'';
+  document.getElementById('rkgrid').innerHTML=note+(top.length?top.map((d,i)=>`
     <div class="rk-card" data-ref="${d.ref}" style="cursor:pointer">
       <div class="rk-h"><div class="rk-n">${i+1}</div>
         <div><div class="rk-ref">${d.ref}</div><div class="rk-meta">${d.tipo} · ${d.bairro} · ${fmtV(d.valor)}</div></div></div>
       <div class="rk-bar"><div class="rk-track"><div class="rk-fill" style="width:${t.m(d)/max*100}%"></div></div>
         <div class="rk-v">${t.fmt(t.m(d))}</div></div>
     </div>`).join('')
-    :'<div style="color:var(--g500);padding:16px;background:#fff;border:1px solid var(--g200);border-radius:12px">Sem imóveis com esse indicador nesse recorte.</div>';
+    :'<div style="color:var(--g500);padding:16px;background:#fff;border:1px solid var(--g200);border-radius:12px">Sem imóveis com esse indicador nesse recorte.</div>');
 }
 
 /* ---------- print head ---------- */
