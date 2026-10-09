@@ -1572,6 +1572,9 @@ function openUpdReport(){
   setTimeout(()=>window.print(),90);
 }
 window.addEventListener('afterprint',()=>document.body.classList.remove('updrep-mode'));
+const VIEW_SLUG={pauta:'pauta',carteira:'qualidade',rankings:'rankings',metaads:'meta-ads',criterios:'criterios',atualizacoes:'atualizacoes',campanha:'campanha'};
+const SLUG_VIEW=Object.fromEntries(Object.entries(VIEW_SLUG).map(([k,v])=>[v,k]));
+function syncHash(){let h='#'+(VIEW_SLUG[state.view]||state.view); if(state.view=='rankings'&&rkActive!='leads')h+='/'+rkActive; if(location.hash!==h)history.replaceState(null,'',h);}
 function setView(v){state.view=v;
   document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view==v));
   document.querySelectorAll('.view').forEach(el=>el.classList.toggle('active',el.id=='view-'+v));
@@ -1583,8 +1586,15 @@ function setView(v){state.view=v;
   if(v=='metaads')renderMeta();
   if(v=='atualizacoes')renderAtualiz();
   if(v=='campanha')renderCampanha();
+  syncHash();
   window.scrollTo(0,0);}
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+function openFromHash(){const raw=(location.hash||'').replace(/^#/,'').toLowerCase(); if(!raw)return;
+  const [slug,sub]=raw.split('/'); const v=SLUG_VIEW[slug]||(document.getElementById('view-'+slug)?slug:null); if(!v)return;
+  if(v=='rankings'&&sub&&RKTABS.some(t=>t.id==sub))rkActive=sub;
+  setView(v);}
+window.addEventListener('hashchange',openFromHash);
+openFromHash();
 
 const bind=(id,key,ev='change')=>document.getElementById(id).addEventListener(ev,e=>{state.f[key]=e.target.value;renderTable();});
 bind('f-corretor','corretor');bind('f-tipo','tipo');
@@ -1615,7 +1625,7 @@ document.getElementById('cartgrid').addEventListener('click',e=>{const r=e.targe
   setView('pauta');state.f.corretor=r.dataset.corr;document.getElementById('f-corretor').value=r.dataset.corr;
   state.f.negocio=cartNeg;document.getElementById('f-negocio').value=cartNeg;setPriceBounds(cartNeg);renderTable();window.scrollTo(0,0);});
 document.getElementById('rkgrid').addEventListener('click',e=>{const c=e.target.closest('[data-ref]');if(c)openDrawer(c.dataset.ref);});
-document.getElementById('rktabs').addEventListener('click',e=>{const b=e.target.closest('[data-rk]');if(!b)return;rkActive=b.dataset.rk;renderRk();});
+document.getElementById('rktabs').addEventListener('click',e=>{const b=e.target.closest('[data-rk]');if(!b)return;rkActive=b.dataset.rk;renderRk();syncHash();});
 document.getElementById('cart-neg').addEventListener('click',e=>{const b=e.target.closest('[data-ng]');if(!b)return;
   cartNeg=b.dataset.ng;[...e.currentTarget.children].forEach(x=>x.classList.toggle('active',x==b));renderCart();});
 document.getElementById('rk-neg').addEventListener('click',e=>{const b=e.target.closest('[data-ng]');if(!b)return;
