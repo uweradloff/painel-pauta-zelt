@@ -504,7 +504,6 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
     <button data-view="metaads">Meta Ads</button>
     <button data-view="criterios">Critérios</button>
     <button data-view="atualizacoes">Atualizações</button>
-    <button data-view="campanha" class="nav-camp"><i data-lucide="crown"></i>Campanha</button>
   </nav>
   <div class="spacer"></div>
   <button class="chip mobile-filter" id="mobToggle" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff"><i data-lucide="sliders-horizontal"></i>Filtros</button>
@@ -1572,7 +1571,7 @@ function openUpdReport(){
   setTimeout(()=>window.print(),90);
 }
 window.addEventListener('afterprint',()=>document.body.classList.remove('updrep-mode'));
-const VIEW_SLUG={pauta:'pauta',carteira:'qualidade',rankings:'rankings',metaads:'meta-ads',criterios:'criterios',atualizacoes:'atualizacoes',campanha:'campanha'};
+const VIEW_SLUG={pauta:'pauta',carteira:'qualidade',rankings:'rankings',metaads:'meta-ads',criterios:'criterios',atualizacoes:'atualizacoes'};
 const SLUG_VIEW=Object.fromEntries(Object.entries(VIEW_SLUG).map(([k,v])=>[v,k]));
 function syncHash(){let h='#'+(VIEW_SLUG[state.view]||state.view); if(state.view=='rankings'&&rkActive!='leads')h+='/'+rkActive; if(location.hash!==h)history.replaceState(null,'',h);}
 function setView(v){state.view=v;
@@ -1590,7 +1589,7 @@ function setView(v){state.view=v;
   window.scrollTo(0,0);}
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
 function openFromHash(){const raw=(location.hash||'').replace(/^#/,'').toLowerCase(); if(!raw)return;
-  const [slug,sub]=raw.split('/'); const v=SLUG_VIEW[slug]||(document.getElementById('view-'+slug)?slug:null); if(!v)return;
+  const [slug,sub]=raw.split('/'); const v=SLUG_VIEW[slug]||(document.getElementById('view-'+slug)?slug:null); if(!v||v=='campanha')return;
   if(v=='rankings'&&sub&&RKTABS.some(t=>t.id==sub))rkActive=sub;
   setView(v);}
 window.addEventListener('hashchange',openFromHash);
