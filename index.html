@@ -116,6 +116,15 @@ tbody tr:nth-child(even):hover{background:var(--orange-50)}
 .ref{font-family:"Oswald";font-weight:600;color:var(--navy);font-size:15px}
 .sub{display:block;font-size:12px;color:var(--g500);font-weight:400;font-family:"Atkinson Hyperlegible"}
 .val{font-family:"Oswald";font-weight:500;color:var(--g800)}
+.dcell{display:flex;flex-direction:column;gap:5px;min-width:72px;white-space:nowrap}
+.dbar{display:block;height:4px;background:var(--g100);border-radius:2px;overflow:hidden}.dbar i{display:block;height:100%;border-radius:2px}
+.mix{display:flex;height:10px;border-radius:3px;overflow:hidden;background:var(--g100);min-width:96px}.mix i{display:block;height:100%}
+.mixt{font-size:12px;color:var(--g600);margin-top:4px;line-height:1.3;max-width:170px;margin-left:auto;margin-right:auto}.mixt .fora{color:var(--verm)}
+.mixleg{display:flex;flex-wrap:wrap;justify-content:center;max-width:150px;margin-left:auto;margin-right:auto;gap:2px 8px;margin-top:3px;font-size:10px;letter-spacing:.02em;font-weight:400;text-transform:none}.mixleg span{display:inline-flex;align-items:center;gap:3px}.mixleg span i{width:7px;height:7px;border-radius:2px;display:inline-block;box-shadow:0 0 0 1px rgba(255,255,255,.75)}
+.ring{flex:none;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.ring b{width:28px;height:28px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:"Oswald";font-size:14px;font-weight:600;color:var(--navy)}
+.nota-cell{display:inline-flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap}.nota-lbl{font-size:11px;color:var(--g600);line-height:1}
+.mix i,.dbar i,.ring{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .score-pill{display:inline-block;min-width:34px;padding:3px 8px;border-radius:var(--r-pill);font-family:"Oswald";font-weight:600;font-size:15px;color:#fff}
 .badge{display:inline-block;padding:3px 9px;border-radius:var(--r-sm);font-family:"Oswald";text-transform:uppercase;letter-spacing:.04em;font-size:11.5px;font-weight:600}
 .b-verde{background:var(--verde-bg);color:var(--verde)}
@@ -959,20 +968,28 @@ function renderQuick(){
 /* ---------- columns ---------- */
 const capDisplay = d => {const c=d.corretores||[]; if(!c.length||d.captadores_raw=='Sem captador')return '<span class="capnull">—</span>';
   return c.length>1 ? `${c[0]} <span class="capmore">+${c.length-1}</span>` : c[0];};
+const PCOL=['#1e1b35','#ff9e36','#2a5f9e','#c9c9d1'], PNOME=['ZAP','Chaves','Imóveis SC','Site'];
+const MIXLEG='<span class="mixleg">'+PNOME.map((n,i)=>'<span><i style="background:'+PCOL[i]+'"></i>'+n+'</span>').join('')+'</span>';
 const COLS=[
  {k:'ref',t:'Imóvel',cls:'ref-col',r:d=>`<span class="ref">${d.ref}<a class="im-link" href="${imovelUrl(d.ref)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Ver anúncio no site"><i data-lucide="external-link"></i></a></span><span class="sub">${d.tipo} · ${d.bairro}</span>`},
  {k:'captadores_raw',t:'Corretor',cls:'cap-col',r:d=>`<span class="capcell" title="${(d.corretores||[]).join(', ')}">${capDisplay(d)}</span>`},
  {k:'negocio',t:'Negócio',r:d=>d.negocio},
  {k:'valor',t:'Valor',r:d=>`<span class="val">${fmtV(d.valor)}</span>`},
- {k:'dias_pauta',t:'Dias',r:d=>fmt(d.dias_pauta)},
- {k:'presenca',t:'Presença',cls:'col-hide-print',r:d=>presBadges(d)},
- {k:'total_views',t:'Views',r:d=>fmt(d.total_views)},
+ {k:'dias_pauta',t:'Na pauta',r:d=>diasCell(d)},
+ {k:'total_views',t:'Views por portal'+MIXLEG,r:d=>mixCell(d)},
  {k:'total_leads',t:'Leads',r:d=>`<b style="font-family:Oswald;color:${(d.total_leads||0)>0?'var(--navy)':'var(--g400)'}">${fmt(d.total_leads||0)}</b>`},
  {k:'cadastro_pct',t:'Anúncio',r:d=>d.cadastro_pct==null?'<span style="color:var(--g300)">—</span>':scorePill(d.cadastro_pct)},
- {k:'score_final',t:'Desempenho',r:d=>scorePill(d.score_final,true)},
- {k:'classificacao',t:'Classif.',r:d=>`<span class="badge ${corMap[d.cor]}">${d.classificacao.replace('Fora de divulgação','Fora')}</span>`},
+ {k:'score_final',t:'Nota',r:d=>notaCell(d)},
  {k:'meta_ativo',t:'Meta',cls:'col-hide-print',r:d=> d.meta_ativo?`<span class="metab on">Ativo</span>`:(d.meta_ads>0?`<span class="metab off">Inativo</span>`:`<span class="capnull">—</span>`)},
 ];
+function diasCell(d){const n=d.dias_pauta||0;return `<div class="dcell"><span>${fmt(n)} dias</span><span class="dbar"><i style="width:${Math.min(100,n/9).toFixed(0)}%;background:${n>180?'var(--orange)':'var(--navy)'}"></i></span></div>`;}
+function mixCell(d){const v=[d.zap_views,d.cnm_exib,d.sc_views,d.site_views].map(x=>+x||0),tot=v.reduce((a,b)=>a+b,0);
+  const pres=[d.in_zap,d.in_chaves,d.in_sc,d.in_site],fora=PNOME.filter((n,i)=>!pres[i]);
+  const segs=tot?v.map((x,i)=>x?`<i style="width:${(x/tot*100).toFixed(1)}%;background:${PCOL[i]}" title="${PNOME[i]}: ${fmt(x)}"></i>`:'').join(''):'';
+  return `<div class="mix" title="${PNOME.map((n,i)=>n+': '+fmt(v[i])).join(' · ')}">${segs}</div><div class="mixt">${fmt(tot)} views${fora.length?` · <span class="fora">fora: ${fora.join(', ')}</span>`:''}</div>`;}
+function notaCell(d){if(d.score_final==null)return `<span class="nota-cell"><span class="ring" style="background:var(--g100)"><b style="color:var(--g400)">—</b></span><span class="nota-lbl">Fora</span></span>`;
+  const s=Math.round(d.score_final),c=scoreColor(d.score_final);
+  return `<span class="nota-cell"><span class="ring" style="background:conic-gradient(${c} 0 ${s}%, var(--g100) ${s}% 100%)"><b>${s}</b></span><span class="nota-lbl">${d.classificacao}</span></span>`;}
 function imovelUrl(ref){return 'https://www.zelt.com.br/imoveis?codigo='+encodeURIComponent(ref);}
 function scorePill(s,big){if(s==null)return '<span style="color:var(--g300)">—</span>';
   return `<span class="score-pill" style="background:${scoreColor(s)}${big?'':';opacity:.92'}">${Math.round(s)}</span>`;}
