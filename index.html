@@ -367,77 +367,82 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
 .crep{width:210mm;height:297mm;overflow:hidden;background:#faf8f4;page:captrep;font-family:"Atkinson Hyperlegible",sans-serif;color:#1e1b35;position:relative}
 .crep *{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-sizing:border-box}
 .crep-in{width:210mm;transform-origin:top left}
-.crep-hd{background:#1e1b35;color:#faf8f4;padding:7mm 12mm 6mm;position:relative;overflow:hidden}
-.crep-bars{position:absolute;right:-6mm;top:-8mm;bottom:-8mm;display:flex;gap:4mm;transform:skewX(-18deg)}
-.crep-bars span{display:block;width:7mm;background:#ff9e36;border-radius:1mm}
-.crep-bars span:nth-child(2){opacity:.55}.crep-bars span:nth-child(3){opacity:.25}
-.crep-top{display:flex;justify-content:space-between;align-items:center;margin-right:30mm}
-.crep-top img{height:9mm;display:block}
-.crep-top .up{font-size:8.5pt;color:rgba(250,248,244,.8);text-align:right;line-height:1.35}
-.crep-top .up b{color:#fff;font-size:10pt}
-.crep-ey{font-family:"Oswald";font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:#ff9e36;margin:5mm 0 1mm}
-.crep-t{font-family:"Oswald";font-weight:600;font-size:34pt;line-height:.95;margin:0;text-transform:lowercase;letter-spacing:-.01em}
+.crep-hd{background:#1e1b35;color:#faf8f4;padding:7mm 11mm 6.5mm;position:relative;overflow:hidden}
+.crep-bars{position:absolute;left:-10mm;bottom:-6mm;top:auto;height:20mm;display:flex;gap:2.5mm;transform:skewX(-18deg);opacity:.18}
+.crep-bars span{display:block;width:4mm;background:#ff9e36;border-radius:1mm}
+.crep-top{display:flex;justify-content:space-between;align-items:center}
+.crep-top img{height:9.5mm;display:block}
+.crep-top .up{font-size:10pt;color:rgba(250,248,244,.85);text-align:right;line-height:1.3}
+.crep-top .up b{color:#fff;font-size:12pt}
+.crep-hgrid{display:grid;grid-template-columns:1fr 58mm;gap:7mm;align-items:end;margin-top:5mm}
+.crep-ey{font-family:"Oswald";font-size:10pt;letter-spacing:.18em;text-transform:uppercase;color:#ff9e36;margin:0 0 1.5mm}
+.crep-t{font-family:"Oswald";font-weight:600;font-size:38pt;line-height:.95;margin:0;text-transform:lowercase;letter-spacing:-.01em}
 .crep-t em{font-style:normal;color:#ff9e36}
-.crep-rail{margin:5mm 30mm 0 0}
-.crep-rail .l{display:flex;justify-content:space-between;font-size:8pt;color:rgba(250,248,244,.8);margin-bottom:1.8mm}
+.crep-rail{margin-top:5.5mm}
+.crep-rail .l{display:flex;justify-content:space-between;font-size:10pt;color:rgba(250,248,244,.85);margin-bottom:2mm}
 .crep-rail .l b{color:#fff}
-.crep-rail .r{position:relative;height:2.2mm;border-radius:2mm;background:rgba(255,255,255,.14)}
+.crep-rail .r{position:relative;height:2.6mm;border-radius:2mm;background:rgba(255,255,255,.16)}
 .crep-rail .r i{position:absolute;left:0;top:0;bottom:0;border-radius:2mm;background:#ff9e36}
-.crep-rail .r b{position:absolute;top:50%;width:4.4mm;height:4.4mm;border-radius:50%;background:#faf8f4;border:1mm solid #ff9e36;transform:translate(-50%,-50%)}
-.crep-body{padding:5mm 12mm 0}
-.crep-sec{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 2.2mm}
-.crep-sec h3{font-family:"Oswald";font-weight:500;font-size:14pt;margin:0;text-transform:lowercase;color:#1e1b35;display:flex;align-items:center;gap:2mm}
-.crep-sec h3::before{content:"";width:1.2mm;height:4.2mm;background:#ff9e36;border-radius:.6mm;transform:skewX(-18deg)}
-.crep-sec span{font-size:7.5pt;color:#6f6a62}
-.crep-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:2.5mm;margin-bottom:5mm}
-.crep-k{background:#fff;border:1px solid #e8e4dc;border-radius:2.5mm;padding:2.6mm 3mm}
-.crep-k .v{font-family:"Oswald";font-weight:500;font-size:17pt;line-height:1;color:#1e1b35}
-.crep-k .l{font-size:7.2pt;color:#4a4640;margin-top:1.3mm;line-height:1.3}
-.crep-k.hl{background:#ff9e36;border-color:#ff9e36}.crep-k.hl .l{color:#1e1b35}
-.crep-pod{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:3mm;align-items:end;margin-bottom:5mm}
-.crep-pd{background:#fff;border:1px solid #e8e4dc;border-radius:3mm;padding:3mm 4mm;position:relative}
-.crep-pd.p1{background:#1e1b35;border-color:#1e1b35;color:#faf8f4;padding:4mm}
-.crep-pd .ps{font-family:"Oswald";font-weight:600;font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:#6f6a62;display:flex;align-items:center;gap:1.5mm}
+.crep-rail .r b{position:absolute;top:50%;width:5mm;height:5mm;border-radius:50%;background:#faf8f4;border:1.1mm solid #ff9e36;transform:translate(-50%,-50%)}
+.crep-cnt{background:#ff9e36;color:#1e1b35;border-radius:4mm;padding:4mm 5mm 4.5mm;text-align:center;position:relative}
+.crep-cnt .n{font-family:"Oswald";font-weight:600;font-size:64pt;line-height:.9;display:block}
+.crep-cnt .l{font-family:"Oswald";font-weight:500;font-size:13pt;text-transform:lowercase;display:block;margin-top:1mm;line-height:1.1}
+.crep-cnt .s{font-size:9.5pt;display:block;margin-top:1.5mm;opacity:.85}
+.crep-body{padding:5.5mm 11mm 0}
+.crep-sec{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 2.5mm;gap:4mm}
+.crep-sec h3{font-family:"Oswald";font-weight:500;font-size:17pt;margin:0;text-transform:lowercase;color:#1e1b35;display:flex;align-items:center;gap:2.2mm;white-space:nowrap}
+.crep-sec h3::before{content:"";width:1.4mm;height:5mm;background:#ff9e36;border-radius:.6mm;transform:skewX(-18deg)}
+.crep-sec span{font-size:9.5pt;color:#4a4640;text-align:right}
+.crep-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-bottom:5.5mm}
+.crep-k{background:#fff;border:1px solid #e8e4dc;border-radius:3mm;padding:3mm 3.5mm}
+.crep-k .v{font-family:"Oswald";font-weight:500;font-size:22pt;line-height:1;color:#1e1b35}
+.crep-k .l{font-size:9.5pt;color:#4a4640;margin-top:1.5mm;line-height:1.3}
+.crep-pod{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:3mm;align-items:end;margin-bottom:5.5mm}
+.crep-pd{background:#fff;border:1px solid #e8e4dc;border-radius:3mm;padding:3.5mm 4mm}
+.crep-pd.p1{background:#1e1b35;border-color:#1e1b35;color:#faf8f4;padding:4.5mm 4.5mm}
+.crep-pd .ps{font-family:"Oswald";font-weight:600;font-size:10pt;letter-spacing:.12em;text-transform:uppercase;color:#4a4640;display:flex;align-items:center;gap:1.5mm}
 .crep-pd.p1 .ps{color:#f2c14e}
-.crep-pd .ps svg{width:4mm;height:4mm}
-.crep-pd .nm{font-weight:700;font-size:10.5pt;margin-top:1mm;line-height:1.15}
-.crep-pd.p1 .nm{font-size:12pt}
-.crep-pd .bg{font-family:"Oswald";font-weight:500;font-size:22pt;line-height:1;margin-top:1.5mm}
-.crep-pd.p1 .bg{font-size:30pt;color:#ff9e36}
-.crep-pd .bg small{font-family:"Atkinson Hyperlegible",sans-serif;font-weight:400;font-size:8pt;color:#6f6a62;margin-left:1.5mm}
-.crep-pd.p1 .bg small{color:rgba(250,248,244,.8)}
-.crep-pd .sc{font-size:7.5pt;color:#4a4640;margin-top:1.4mm;display:flex;gap:3mm;flex-wrap:wrap}
-.crep-pd.p1 .sc{color:rgba(250,248,244,.8)}
+.crep-pd .ps svg{width:4.6mm;height:4.6mm}
+.crep-pd .nm{font-weight:700;font-size:12.5pt;margin-top:1.2mm;line-height:1.15}
+.crep-pd.p1 .nm{font-size:14pt}
+.crep-pd .bg{font-family:"Oswald";font-weight:500;font-size:28pt;line-height:1;margin-top:1.8mm}
+.crep-pd.p1 .bg{font-size:38pt;color:#ff9e36}
+.crep-pd .bg small{font-family:"Atkinson Hyperlegible",sans-serif;font-weight:400;font-size:10pt;color:#4a4640;margin-left:1.5mm}
+.crep-pd.p1 .bg small{color:rgba(250,248,244,.85)}
+.crep-pd .sc{font-size:9.5pt;color:#4a4640;margin-top:1.6mm;display:flex;gap:1mm 3.5mm;flex-wrap:wrap}
+.crep-pd.p1 .sc{color:rgba(250,248,244,.85)}
 .crep-pd .sc b{color:#1e1b35}.crep-pd.p1 .sc b{color:#fff}
 .crep-pd.empty .nm{color:#a8a299}.crep-pd.p1.empty .nm{color:rgba(250,248,244,.6)}
-.crep-tb{width:100%;border-collapse:separate;border-spacing:0;font-size:8.3pt;background:#fff;border:1px solid #e8e4dc;border-radius:2.5mm;overflow:hidden;margin-bottom:5mm}
-.crep-tb th{background:#1e1b35;color:#faf8f4;font-family:"Oswald";font-weight:500;text-transform:uppercase;letter-spacing:.05em;font-size:6.8pt;text-align:left;padding:1.8mm 2mm}
+.crep-tb{width:100%;border-collapse:separate;border-spacing:0;font-size:10.5pt;background:#fff;border:1px solid #e8e4dc;border-radius:3mm;overflow:hidden;margin-bottom:5mm}
+.crep-tb th{background:#1e1b35;color:#faf8f4;font-family:"Oswald";font-weight:500;text-transform:uppercase;letter-spacing:.05em;font-size:8.5pt;text-align:left;padding:2mm 2.2mm}
 .crep-tb th.r,.crep-tb td.r{text-align:right}
-.crep-tb td{padding:1.15mm 2mm;border-top:1px solid #f1ece3;vertical-align:middle;text-align:left}
-.crep-tb tbody tr:nth-child(even) td{background:#fcfbf8}.crep-tb tbody tr.t3 td{background:#fff8ee}
-.crep-tb tr.z td{color:#a8a299}
-.crep-tb tr.t3 td{background:#fff8ee}
-.crep-tb .pos{display:inline-flex;width:5.2mm;height:5.2mm;border-radius:50%;align-items:center;justify-content:center;font-family:"Oswald";font-weight:600;font-size:8pt;background:#f1ece3;color:#1e1b35}
+.crep-tb td{padding:1.6mm 2.2mm;border-top:1px solid #f1ece3;vertical-align:middle;text-align:left}
+.crep-tb tbody tr:nth-child(even) td{background:#fcfbf8}
+.crep-tb tbody tr.t3 td{background:#fff3e2}
+.crep-tb tr.z td{color:#6f6a62}
+.crep-tb .pos{display:inline-flex;width:6.2mm;height:6.2mm;border-radius:50%;align-items:center;justify-content:center;font-family:"Oswald";font-weight:600;font-size:10pt;background:#f1ece3;color:#1e1b35}
 .crep-tb .pos.g1{background:#f2c14e}.crep-tb .pos.g2{background:#d9d6cf}.crep-tb .pos.g3{background:#e9b98a}
-.crep-tb .nm{font-weight:700;color:#1e1b35}.crep-tb tr.z .nm{color:#a8a299;font-weight:400}
-.crep-tb .qb{display:flex;align-items:center;gap:1.8mm}
-.crep-tb .qb .t{width:22mm;height:2mm;border-radius:1mm;background:#f1ece3;overflow:hidden;flex:none}
-.crep-tb .qb .t i{display:block;height:100%;background:#ff9e36;border-radius:1mm}
-.crep-tb .qb b{font-family:"Oswald";font-weight:500;font-size:10pt;min-width:5mm}
-.crep-tb .qb small{font-size:6.6pt;color:#6f6a62}
-.crep-tb .mn{font-family:"Oswald";font-size:9pt}
-.crep-tb .st{font-size:6.8pt;font-weight:700;padding:.5mm 1.8mm;border-radius:2mm;white-space:nowrap}
-.crep-tb .st.ok{background:#e3f1e9;color:#1f6b45}.crep-tb .st.bad{background:#f8e1e1;color:#9e2b2b}.crep-tb .st.wait{background:#f1ece3;color:#6f6a62}
-.crep-bot{display:grid;grid-template-columns:1.1fr 1fr;gap:4mm;margin-bottom:5mm}
-.crep-box{background:#fff;border:1px solid #e8e4dc;border-radius:2.5mm;padding:3mm 3.5mm}
-.crep-box h4{font-family:"Oswald";font-weight:500;font-size:10.5pt;margin:0 0 1.5mm;text-transform:lowercase}
-.crep-box p{margin:0;font-size:7.4pt;color:#4a4640;line-height:1.45}
-.crep-box p b{color:#1e1b35}
-.crep-ch{display:flex;align-items:flex-end;gap:.6mm;height:16mm}
-.crep-ch i{flex:1;background:#ff9e36;border-radius:.6mm .6mm 0 0;min-height:.4mm}
-.crep-ch i.f{background:#f1ece3}.crep-ch i.n{background:#ddd2bf}
-.crep-chx{display:flex;justify-content:space-between;font-size:6.5pt;color:#6f6a62;margin-top:1mm}
-.crep-ft{position:absolute;left:0;right:0;bottom:0;background:#1e1b35;color:rgba(250,248,244,.8);padding:2.6mm 12mm;display:flex;justify-content:space-between;align-items:center;font-size:7.2pt}
+.crep-tb .nm{font-weight:700;color:#1e1b35}.crep-tb tr.z .nm{color:#6f6a62;font-weight:400}
+.crep-tb .qb{display:flex;align-items:center;gap:2mm}
+.crep-tb .qb .t{width:20mm;height:2.6mm;border-radius:1.3mm;background:#f1ece3;overflow:hidden;flex:none}
+.crep-tb .qb .t i{display:block;height:100%;background:#ff9e36;border-radius:1.3mm}
+.crep-tb .qb b{font-family:"Oswald";font-weight:500;font-size:13pt;min-width:5mm}
+.crep-tb .qb small{font-size:8.5pt;color:#4a4640}
+.crep-tb .mn{font-family:"Oswald";font-size:11pt}
+.crep-tb .st{font-size:9pt;font-weight:700;padding:.6mm 2mm;border-radius:2mm;white-space:nowrap}
+.crep-tb .st.ok{background:#e3f1e9;color:#1f6b45}.crep-tb .st.bad{background:#f8e1e1;color:#9e2b2b}.crep-tb .st.wait{background:#f1ece3;color:#4a4640}
+.crep-zero{background:#fff;border:1px dashed #cfcabf;border-radius:3mm;padding:3.2mm 4mm;margin-bottom:5mm}
+.crep-zero .h{display:flex;align-items:baseline;gap:3mm;margin-bottom:2.4mm;flex-wrap:wrap}
+.crep-zero .h b{font-family:"Oswald";font-weight:500;font-size:14pt;text-transform:lowercase}
+.crep-zero .h span{font-size:9.5pt;color:#4a4640}
+.crep-zero .ch{display:flex;flex-wrap:wrap;gap:2mm}
+.crep-zero .ch span{font-size:10.5pt;background:#f1ece3;border-radius:5mm;padding:1mm 3.2mm;color:#1e1b35}
+.crep-rule{background:#fff;border:1px solid #e8e4dc;border-left:0;border-radius:3mm;padding:3.2mm 4mm;margin-bottom:5mm;display:grid;grid-template-columns:30mm 1fr;gap:4mm;align-items:start}
+.crep-rule h4{font-family:"Oswald";font-weight:500;font-size:14pt;margin:0;text-transform:lowercase;line-height:1.1}
+.crep-rule p{margin:0;font-size:9.5pt;color:#1e1b35;line-height:1.45}
+.crep-rule p b{color:#1e1b35}
+.crep-rule p span{color:#4a4640}
+.crep-ft{position:absolute;left:0;right:0;bottom:0;background:#1e1b35;color:rgba(250,248,244,.85);padding:3mm 11mm;display:flex;justify-content:space-between;align-items:center;font-size:10pt}
 .crep-ft b{color:#ff9e36}
 @media print{
   body.captrep-mode > *:not(#capt-report){display:none!important}
@@ -1811,7 +1816,8 @@ function buildCaptReport(){
       <div class="bg">${q1(a.qtd)}<small>${a.qtd==1?'qualificada':'qualificadas'}</small></div>
       <div class="sc"><span>VGV <b>${mi(a.vgv)}</b></span><span>ticket <b>${mi(a.ticket)}</b></span><span><b>${q1(a.lq)}</b> leads</span></div></div>`;};
   const mQ=Math.max(1,...R.map(a=>a.qtd));
-  const rows=R.map((a,i)=>{
+  const zer=R.filter(a=>!a.qtd&&!a.nq), RT=R.filter(a=>a.qtd||a.nq);
+  const rows=RT.map((a,i)=>{
     const pos=a.qtd?i+1:'–', top=a.qtd&&i<3;
     let st;
     if(!a.qtd)st=a.nq?'<span class="st wait">só não qualificadas</span>':'<span class="st wait">ainda não pontuou</span>';
@@ -1828,28 +1834,30 @@ function buildCaptReport(){
   document.getElementById('capt-report').innerHTML=`<div class="crep"><div class="crep-in">
     <div class="crep-hd"><div class="crep-bars"><span></span><span></span><span></span></div>
       <div class="crep-top"><img src="${logo}" alt="ZELT Imóveis"><div class="up">Atualizado em<br><b>${hojeTxt}</b></div></div>
-      <div class="crep-ey">Campanha de captação · Venda</div>
-      <h1 class="crep-t">corrida da <em>captação</em></h1>
-      <div class="crep-rail"><div class="l"><span>Largada <b>${br(C.inicio)}</b></span><span>${started?`Dia <b>${dia}</b> de ${total} · faltam <b>${falta} dias</b>`:`Começa em <b>${br(C.inicio)}</b>`}</span><span>Chegada <b>${br(C.fim)}</b></span></div>
-        <div class="r"><i style="width:${pct}%"></i><b style="left:${pct}%"></b></div></div>
+      <div class="crep-hgrid">
+        <div>
+          <div class="crep-ey">Campanha de captação · Venda</div>
+          <h1 class="crep-t">corrida da <em>captação</em></h1>
+          <div class="crep-rail"><div class="l"><span>Largada <b>${br(C.inicio)}</b></span><span>${started?`Dia <b>${dia}</b> de ${total} · faltam <b>${falta} dias</b>`:`Começa em <b>${br(C.inicio)}</b>`}</span><span>Chegada <b>${br(C.fim)}</b></span></div>
+            <div class="r"><i style="width:${pct}%"></i><b style="left:${pct}%"></b></div></div>
+        </div>
+        <div class="crep-cnt"><span class="n">${q1(nCap)}</span><span class="l">${nCap==1?'captação qualificada':'captações qualificadas'}</span><span class="s">${nAll>nCap?'de '+q1(nAll)+' captações no total':'pelo time até agora'}</span></div>
+      </div>
     </div>
     <div class="crep-body">
       <div class="crep-sec"><h3>o time até agora</h3><span>Só captações qualificadas</span></div>
       <div class="crep-kpis">
-        <div class="crep-k hl"><div class="v">${q1(nCap)}</div><div class="l">captações qualificadas<br>de ${q1(nAll)} no total</div></div>
-        <div class="crep-k"><div class="v">${mi(vgv)}</div><div class="l">VGV qualificado</div></div>
+        <div class="crep-k"><div class="v">${mi(vgv)}</div><div class="l">VGV captado</div></div>
         <div class="crep-k"><div class="v">${nCap?mi(tk):'—'}</div><div class="l">ticket médio</div></div>
-        <div class="crep-k"><div class="v">${q1(nLeads)}</div><div class="l">leads gerados${nCap?'<br>'+q1(nLeads/nCap)+' por captação':''}</div></div>
-        <div class="crep-k"><div class="v">${proj!=null?q1(proj):'—'}</div><div class="l">${proj!=null?'projeção até '+br(C.fim)+'<br>no ritmo atual':'projeção a partir<br>do 3º dia'}</div></div>
+        <div class="crep-k"><div class="v">${q1(nLeads)}</div><div class="l">leads gerados${nCap?' · '+q1(nLeads/nCap)+' por captação':''}</div></div>
+        <div class="crep-k"><div class="v">${proj!=null?q1(proj):'—'}</div><div class="l">${proj!=null?'projeção até '+br(C.fim):'projeção a partir do 3º dia'}</div></div>
       </div>
       <div class="crep-sec"><h3>pódio</h3><span>Por captações qualificadas · desempate pelo VGV</span></div>
       <div class="crep-pod">${pd(R[1],2)}${pd(R[0],1)}${pd(R[2],3)}</div>
-      <div class="crep-sec"><h3>onde cada um está</h3><span>n/q = captação não qualificada (aparece, mas não pontua)</span></div>
-      <table class="crep-tb"><thead><tr><th style="width:8mm">#</th><th>Corretor</th><th>Qualificadas</th><th class="r">VGV</th><th class="r">Ticket</th><th class="r">Leads</th><th>Última</th><th>Situação</th></tr></thead><tbody>${rows}</tbody></table>
-      <div class="crep-bot">
-        <div class="crep-box"><h4>dia a dia</h4><div class="crep-ch">${ch}</div><div class="crep-chx"><span>${br(C.inicio)}</span><span>laranja: qualificadas · bege: não pontuam</span><span>${br(C.fim)}</span></div></div>
-        <div class="crep-box"><h4>o que pontua</h4><p>Imóvel de <b>venda</b> que entra na pauta no período (cadastro novo ou <b>recaptação</b> após 60+ dias fora), nos bairros <b>${C.regra.a.join(', ')}</b>. Em <b>${C.regra.b.join(', ')}</b>, só acima de <b>R$ 350 mil</b>. Captação com dois captadores divide meio a meio.</p></div>
-      </div>
+      <div class="crep-sec"><h3>onde cada um está</h3><span>n/q = captação que não pontua</span></div>
+      ${RT.length?`<table class="crep-tb"><thead><tr><th style="width:9mm">#</th><th>Corretor</th><th>Qualificadas</th><th class="r">VGV</th><th class="r">Ticket</th><th class="r">Leads</th><th>Última</th><th>Situação</th></tr></thead><tbody>${rows}</tbody></table>`:''}
+      ${zer.length?`<div class="crep-zero"><div class="h"><b>ainda na largada</b><span>${zer.length} ${zer.length==1?'corretor ainda não pontuou':'corretores ainda não pontuaram'}. A primeira captação qualificada já coloca no ranking.</span></div><div class="ch">${zer.map(a=>`<span>${a.nome}</span>`).join('')}</div></div>`:''}
+      <div class="crep-rule"><h4>o que pontua</h4><p><b>Imóvel de venda que entra na pauta</b> no período: cadastro novo ou recaptação (60+ dias fora). Bairros: <b>${C.regra.a.join(', ')}</b>. <span>Em ${C.regra.b.join(', ')}, só acima de R$ 350 mil. Dois captadores dividem meio a meio.</span></p></div>
     </div></div>
     <div class="crep-ft"><span><b>Painel de Pauta ZELT</b> · aba Captação</span><span>Bora captar! Faltam ${started?falta:total} dias.</span></div>
   </div>`;
@@ -1857,8 +1865,9 @@ function buildCaptReport(){
   const pg=document.querySelector('#capt-report .crep'), inn=pg.querySelector('.crep-in'), ft=pg.querySelector('.crep-ft');
   inn.style.zoom='';inn.style.width='';
   const avail=pg.clientHeight-ft.offsetHeight-4;
-  for(let k=0;k<4;k++){const h=inn.scrollHeight*(parseFloat(inn.style.zoom)||1);if(h<=avail)break;
-    const z=(parseFloat(inn.style.zoom)||1)*avail/h;inn.style.zoom=z.toFixed(4);inn.style.width=(210/z).toFixed(2)+'mm';}
+  let z=1;
+  for(let k=0;k<6;k++){const h=inn.getBoundingClientRect().height;if(h<=avail&&h>avail*0.985)break;if(h<=avail&&z>=1)break;
+    z=Math.min(1,z*avail/h*0.998);inn.style.zoom=z.toFixed(4);inn.style.width=(210/z).toFixed(2)+'mm';}
 }
 function exportCaptPdf(){
   const el=document.getElementById('capt-report');
