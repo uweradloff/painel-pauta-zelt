@@ -376,7 +376,7 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
 .crep-top .up b{color:#fff;font-size:12pt}
 .crep-hgrid{display:grid;grid-template-columns:1fr 58mm;gap:7mm;align-items:end;margin-top:5mm}
 .crep-ey{font-family:"Oswald";font-size:10pt;letter-spacing:.18em;text-transform:uppercase;color:#ff9e36;margin:0 0 1.5mm}
-.crep-t{font-family:"Oswald";font-weight:600;font-size:38pt;line-height:.95;margin:0;text-transform:lowercase;letter-spacing:-.01em}
+.crep-t{font-family:"Oswald";font-weight:600;font-size:38pt;line-height:.95;margin:0;letter-spacing:-.01em}
 .crep-t em{font-style:normal;color:#ff9e36}
 .crep-rail{margin-top:5.5mm}
 .crep-rail .l{display:flex;justify-content:space-between;font-size:10pt;color:rgba(250,248,244,.85);margin-bottom:2mm}
@@ -386,12 +386,12 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
 .crep-rail .r b{position:absolute;top:50%;width:5mm;height:5mm;border-radius:50%;background:#faf8f4;border:1.1mm solid #ff9e36;transform:translate(-50%,-50%)}
 .crep-cnt{background:#ff9e36;color:#1e1b35;border-radius:4mm;padding:4mm 5mm 4.5mm;text-align:center;position:relative}
 .crep-cnt .n{font-family:"Oswald";font-weight:600;font-size:64pt;line-height:.9;display:block}
-.crep-cnt .l{font-family:"Oswald";font-weight:500;font-size:13pt;text-transform:lowercase;display:block;margin-top:1mm;line-height:1.1}
+.crep-cnt .l{font-family:"Oswald";font-weight:500;font-size:13pt;display:block;margin-top:1mm;line-height:1.1}
 .crep-cnt .s{font-size:9.5pt;display:block;margin-top:1.5mm;opacity:.85}
 .crep-body{padding:5.5mm 11mm 0}
 .crep-sec{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 2.5mm;gap:4mm}
-.crep-sec h3{font-family:"Oswald";font-weight:500;font-size:17pt;margin:0;text-transform:lowercase;color:#1e1b35;display:flex;align-items:center;gap:2.2mm;white-space:nowrap}
-.crep-sec h3::before{content:"";width:1.4mm;height:5mm;background:#ff9e36;border-radius:.6mm;transform:skewX(-18deg)}
+.crep-sec h3{font-family:"Oswald";font-weight:500;font-size:17pt;margin:0;color:#1e1b35;display:flex;align-items:center;gap:2.2mm;white-space:nowrap}
+.crep-sec h3::before{content:"";width:3.9mm;height:5.1mm;background:url(data:image/png;base64,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) center/contain no-repeat;flex:none}
 .crep-sec span{font-size:9.5pt;color:#4a4640;text-align:right}
 .crep-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-bottom:5.5mm}
 .crep-k{background:#fff;border:1px solid #e8e4dc;border-radius:3mm;padding:3mm 3.5mm}
@@ -433,12 +433,12 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
 .crep-tb .st.ok{background:#e3f1e9;color:#1f6b45}.crep-tb .st.bad{background:#f8e1e1;color:#9e2b2b}.crep-tb .st.wait{background:#f1ece3;color:#4a4640}
 .crep-zero{background:#fff;border:1px dashed #cfcabf;border-radius:3mm;padding:3.2mm 4mm;margin-bottom:5mm}
 .crep-zero .h{display:flex;align-items:baseline;gap:3mm;margin-bottom:2.4mm;flex-wrap:wrap}
-.crep-zero .h b{font-family:"Oswald";font-weight:500;font-size:14pt;text-transform:lowercase}
+.crep-zero .h b{font-family:"Oswald";font-weight:500;font-size:14pt}
 .crep-zero .h span{font-size:9.5pt;color:#4a4640}
 .crep-zero .ch{display:flex;flex-wrap:wrap;gap:2mm}
 .crep-zero .ch span{font-size:10.5pt;background:#f1ece3;border-radius:5mm;padding:1mm 3.2mm;color:#1e1b35}
 .crep-rule{background:#fff;border:1px solid #e8e4dc;border-left:0;border-radius:3mm;padding:3.2mm 4mm;margin-bottom:5mm;display:grid;grid-template-columns:30mm 1fr;gap:4mm;align-items:start}
-.crep-rule h4{font-family:"Oswald";font-weight:500;font-size:14pt;margin:0;text-transform:lowercase;line-height:1.1}
+.crep-rule h4{font-family:"Oswald";font-weight:500;font-size:14pt;margin:0;line-height:1.1}
 .crep-rule p{margin:0;font-size:9.5pt;color:#1e1b35;line-height:1.45}
 .crep-rule p b{color:#1e1b35}
 .crep-rule p span{color:#4a4640}
@@ -912,7 +912,7 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
       #view-captacao .cp-bars span:nth-child(2){opacity:.55}#view-captacao .cp-bars span:nth-child(3){opacity:.25}
       #view-captacao .cp-eyebrow{font-family:"Oswald";font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin:0 0 6px;display:flex;align-items:center;gap:8px}
       #view-captacao .cp-eyebrow i[data-lucide]{width:16px;height:16px}
-      #view-captacao .cp-hero h2{font-family:"Oswald";font-weight:600;font-size:54px;line-height:.95;margin:0;text-transform:lowercase;letter-spacing:-.01em;max-width:calc(100% - 170px)}
+      #view-captacao .cp-hero h2{font-family:"Oswald";font-weight:600;font-size:54px;line-height:.95;margin:0;letter-spacing:-.01em;max-width:calc(100% - 170px)}
       #view-captacao .cp-hero h2 em{font-style:normal;color:var(--o)}
       #view-captacao .cp-sub{margin:10px 0 0;font-size:15px;color:rgba(250,248,244,.78);max-width:640px;line-height:1.5}
       #view-captacao .cp-track{margin:22px 0 4px;max-width:calc(100% - 170px)}
@@ -926,7 +926,8 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
       #view-captacao .cp-k .v{font-family:"Oswald";font-weight:500;font-size:32px;line-height:1}
       #view-captacao .cp-k .l{font-size:13px;color:rgba(250,248,244,.78);margin-top:6px;line-height:1.35}
       #view-captacao .cp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap}
-      #view-captacao .cp-head h3{font-family:"Oswald";font-weight:500;font-size:28px;margin:0;color:var(--navy);text-transform:lowercase}
+      #view-captacao .cp-head h3{font-family:"Oswald";font-weight:500;font-size:28px;margin:0;color:var(--navy)}
+      #view-captacao .cp-head h3{display:flex;align-items:center;gap:10px}#view-captacao .cp-head h3::before{content:"";width:17px;height:22px;flex:none;background:url(data:image/png;base64,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) center/contain no-repeat}
       #view-captacao .cp-head p{margin:2px 0 0;font-size:14px;color:var(--g600)}
       #view-captacao .cp-tog{display:flex;background:var(--sand);border-radius:999px;padding:4px}
       #view-captacao .cp-tog button{font:inherit;font-size:14px;border:0;border-radius:999px;padding:0 18px;height:38px;cursor:pointer;background:transparent;color:var(--g700)}
@@ -999,7 +1000,7 @@ i[data-lucide] svg{width:100%;height:100%;stroke:currentColor;display:block}
       #view-captacao .fora{font-size:13px;color:var(--g600);padding:0 4px}
       #view-captacao .rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
       #view-captacao .rule{background:var(--bone);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--g700);line-height:1.45}
-      #view-captacao .rule b{display:block;font-family:"Oswald";font-weight:500;font-size:15px;color:var(--navy);margin-bottom:4px;text-transform:lowercase}
+      #view-captacao .rule b{display:block;font-family:"Oswald";font-weight:500;font-size:15px;color:var(--navy);margin-bottom:4px}
       @media(max-width:900px){
         #view-captacao .cp-hero{padding:24px 20px}#view-captacao .cp-hero h2{font-size:40px;max-width:none}
         #view-captacao .cp-bars{display:none}#view-captacao .cp-track,#view-captacao .cp-kpis{max-width:none}
@@ -1837,27 +1838,27 @@ function buildCaptReport(){
       <div class="crep-hgrid">
         <div>
           <div class="crep-ey">Campanha de captação · Venda</div>
-          <h1 class="crep-t">corrida da <em>captação</em></h1>
+          <h1 class="crep-t">Corrida da <em>captação</em></h1>
           <div class="crep-rail"><div class="l"><span>Largada <b>${br(C.inicio)}</b></span><span>${started?`Dia <b>${dia}</b> de ${total} · faltam <b>${falta} dias</b>`:`Começa em <b>${br(C.inicio)}</b>`}</span><span>Chegada <b>${br(C.fim)}</b></span></div>
             <div class="r"><i style="width:${pct}%"></i><b style="left:${pct}%"></b></div></div>
         </div>
-        <div class="crep-cnt"><span class="n">${q1(nCap)}</span><span class="l">${nCap==1?'captação qualificada':'captações qualificadas'}</span><span class="s">${nAll>nCap?'de '+q1(nAll)+' captações no total':'pelo time até agora'}</span></div>
+        <div class="crep-cnt"><span class="n">${q1(nCap)}</span><span class="l">${nCap==1?'Captação qualificada':'Captações qualificadas'}</span><span class="s">${nAll>nCap?'de '+q1(nAll)+' captações no total':'pelo time até agora'}</span></div>
       </div>
     </div>
     <div class="crep-body">
-      <div class="crep-sec"><h3>o time até agora</h3><span>Só captações qualificadas</span></div>
+      <div class="crep-sec"><h3>O time até agora</h3><span>Só captações qualificadas</span></div>
       <div class="crep-kpis">
         <div class="crep-k"><div class="v">${mi(vgv)}</div><div class="l">VGV captado</div></div>
         <div class="crep-k"><div class="v">${nCap?mi(tk):'—'}</div><div class="l">ticket médio</div></div>
         <div class="crep-k"><div class="v">${q1(nLeads)}</div><div class="l">leads gerados${nCap?' · '+q1(nLeads/nCap)+' por captação':''}</div></div>
         <div class="crep-k"><div class="v">${proj!=null?q1(proj):'—'}</div><div class="l">${proj!=null?'projeção até '+br(C.fim):'projeção a partir do 3º dia'}</div></div>
       </div>
-      <div class="crep-sec"><h3>pódio</h3><span>Por captações qualificadas · desempate pelo VGV</span></div>
+      <div class="crep-sec"><h3>Pódio</h3><span>Por captações qualificadas · desempate pelo VGV</span></div>
       <div class="crep-pod">${pd(R[1],2)}${pd(R[0],1)}${pd(R[2],3)}</div>
-      <div class="crep-sec"><h3>onde cada um está</h3><span>n/q = captação que não pontua</span></div>
+      <div class="crep-sec"><h3>Onde cada um está</h3><span>n/q = captação que não pontua</span></div>
       ${RT.length?`<table class="crep-tb"><thead><tr><th style="width:9mm">#</th><th>Corretor</th><th>Qualificadas</th><th class="r">VGV</th><th class="r">Ticket</th><th class="r">Leads</th><th>Última</th><th>Situação</th></tr></thead><tbody>${rows}</tbody></table>`:''}
-      ${zer.length?`<div class="crep-zero"><div class="h"><b>ainda na largada</b><span>${zer.length} ${zer.length==1?'corretor ainda não pontuou':'corretores ainda não pontuaram'}. A primeira captação qualificada já coloca no ranking.</span></div><div class="ch">${zer.map(a=>`<span>${a.nome}</span>`).join('')}</div></div>`:''}
-      <div class="crep-rule"><h4>o que pontua</h4><p><b>Imóvel de venda que entra na pauta</b> no período: cadastro novo ou recaptação (60+ dias fora). Bairros: <b>${C.regra.a.join(', ')}</b>. <span>Em ${C.regra.b.join(', ')}, só acima de R$ 350 mil. Dois captadores dividem meio a meio.</span></p></div>
+      ${zer.length?`<div class="crep-zero"><div class="h"><b>Ainda na largada</b><span>${zer.length} ${zer.length==1?'corretor ainda não pontuou':'corretores ainda não pontuaram'}. A primeira captação qualificada já coloca no ranking.</span></div><div class="ch">${zer.map(a=>`<span>${a.nome}</span>`).join('')}</div></div>`:''}
+      <div class="crep-rule"><h4>O que pontua</h4><p><b>Imóvel de venda que entra na pauta</b> no período: cadastro novo ou recaptação (60+ dias fora). Bairros: <b>${C.regra.a.join(', ')}</b>. <span>Em ${C.regra.b.join(', ')}, só acima de R$ 350 mil. Dois captadores dividem meio a meio.</span></p></div>
     </div></div>
     <div class="crep-ft"><span><b>Painel de Pauta ZELT</b> · aba Captação</span><span>Bora captar! Faltam ${started?falta:total} dias.</span></div>
   </div>`;
@@ -1908,7 +1909,7 @@ function renderCaptacao(){
   // hero
   let h=`<div class="cp-actions"><span>Relatório de uma página, pronto para mandar no grupo dos corretores.</span><button type="button" class="cp-pdf"><i data-lucide="file-down"></i>Exportar PDF (A4)</button></div><section class="cp-hero"><div class="cp-bars" aria-hidden="true"><span></span><span></span><span></span></div>
     <p class="cp-eyebrow"><i data-lucide="flame"></i>Campanha de captação · Venda</p>
-    <h2>corrida da <em>captação</em></h2>
+    <h2>Corrida da <em>captação</em></h2>
     <p class="cp-sub">Quem traz mais imóveis de venda <b style="color:var(--o)">qualificados</b> para a ZELT entre ${br(C.inicio)} e ${br(C.fim)}. Todas as captações aparecem no painel, mas só as qualificadas pontuam.</p>
     <div class="cp-track"><div class="cp-track-l"><span>Largada <b>${br(C.inicio)}</b></span><span>${started?`Dia <b>${dia}</b> de ${total} · faltam <b>${falta} dias</b>`:`Começa em <b>${br(C.inicio)}</b>`}</span><span>Chegada <b>${br(C.fim)}</b></span></div>
       <div class="cp-rail"><i style="width:${started?pctT:0}%"></i><b style="left:${started?pctT:0}%"></b></div></div>
@@ -1925,7 +1926,7 @@ function renderCaptacao(){
     const main=lbl?`${q1(a.qtd)}<small>${a.qtd==1?'qualificada':'qualificadas'}</small>`:lbV?`${mi(a.vgv)}<small>VGV</small>`:`${q1(a.lq)}<small>leads</small>`;
     const sec=(lbl?'':`<span><b>${q1(a.qtd)}</b> ${a.qtd==1?'captação':'captações'}</span>`)+(lbV?'':`<span>VGV <b>${mi(a.vgv)}</b></span>`)+(cpMode=='leads'?'':`<span><b>${q1(a.lq)}</b> leads</span>`);
     return `<div class="pd ${p==1?'p1':''}"><div class="pos">${p==1?'<i data-lucide="crown"></i>':''}${p}º lugar</div><div class="nm">${a.nome}</div><div class="big">${main}</div><div class="sec">${sec}<span>ticket <b>${mi(a.ticket)}</b></span></div></div>`;};
-  h+=`<div class="cp-head"><div><h3>pódio</h3><p>${lbl?'Ordenado por captações qualificadas (desempate pelo VGV).':lbV?'Ordenado pelo VGV qualificado (desempate pela quantidade).':'Ordenado pelos leads que as captações qualificadas já geraram.'}</p></div>
+  h+=`<div class="cp-head"><div><h3>Pódio</h3><p>${lbl?'Ordenado por captações qualificadas (desempate pelo VGV).':lbV?'Ordenado pelo VGV qualificado (desempate pela quantidade).':'Ordenado pelos leads que as captações qualificadas já geraram.'}</p></div>
     <div class="cp-tog" role="group" aria-label="Ordenar ranking"><button type="button" data-m="qtd" class="${lbl?'on':''}" aria-pressed="${lbl}">Quantidade</button><button type="button" data-m="vgv" class="${lbV?'on':''}" aria-pressed="${lbV}">VGV</button><button type="button" data-m="leads" class="${cpMode=='leads'?'on':''}" aria-pressed="${cpMode=='leads'}">Leads</button></div></div>
     <div class="cp-podium">${pdCard(top[1],2)}${pdCard(top[0],1)}${pdCard(top[2],3)}</div>`;
   // leaderboard
@@ -1956,14 +1957,14 @@ function renderCaptacao(){
         const og=it.origem=='recaptacao'?` <span class="tag" style="background:#e8eefb;color:#1f4f8a">recaptação · cadastro ${br(it.cadastro)}/${it.cadastro.slice(2,4)}</span>`:it.origem=='ativada'?` <span class="tag" style="background:#e8eefb;color:#1f4f8a">ativada · cadastro ${br(it.cadastro)}</span>`:'';
         return `<tr><td><a class="ref" href="${imovelUrl(it.ref)}" target="_blank" rel="noopener">${it.ref}</a>${og}${sh}</td><td>${br(it.data)}</td><td>${it.tipo} · ${it.bairro}</td><td style="text-align:right;white-space:nowrap">${fmtV(it.valor)}</td><td style="text-align:right;white-space:nowrap">${fmt(it.views||0)} · <b>${it.leads||0}</b></td><td>${it.qualif?'<span class="tag ok"><i data-lucide="check"></i>qualificada</span>':`<span class="tag bad">não pontua · ${it.motivo}</span>`}</td><td>${noar}</td><td>${an}</td></tr>`;}).join('')}</tbody></table></td></tr>`;}
   });
-  h+=`<div class="cp-head"><div><h3>ranking completo</h3><p>Conta só captações qualificadas. Clique num corretor para ver todos os imóveis que ele captou, inclusive os que não pontuam.</p></div></div>
+  h+=`<div class="cp-head"><div><h3>Ranking completo</h3><p>Conta só captações qualificadas. Clique num corretor para ver todos os imóveis que ele captou, inclusive os que não pontuam.</p></div></div>
     <div class="card lbwrap"><table class="lb"><thead><tr><th style="width:52px">#</th><th>Corretor</th><th>Qualificadas</th><th>VGV qualificado</th><th class="r">Ticket médio</th><th>Leads</th><th>Última</th><th>Follow-up</th><th></th></tr></thead><tbody>${rows||'<tr><td colspan="9" style="text-align:center;color:var(--g600);padding:24px">Nenhum corretor de venda encontrado.</td></tr>'}</tbody></table></div>`;
   if(fora.length)h+=`<p class="fora">Fora da disputa e dos totais: ${fora.map(a=>a.nome).join(', ')}.</p>`;
   // follow-up
   const semCap=comp.filter(a=>!a.qtd), parados=comp.filter(a=>a.qtd&&a.dias>=7).sort((a,b)=>b.dias-a.dias);
   const naoPub=C.itens.filter(it=>pend(it)&&!it.captadores.every(isZ)).sort((a,b)=>a.data.localeCompare(b.data));
   const li=(a,b)=>`<li><span>${a}</span><span>${b}</span></li>`;
-  h+=`<div class="cp-head"><div><h3>follow-up</h3><p>Quem chamar para conversar esta semana.</p></div></div><div class="grid3">
+  h+=`<div class="cp-head"><div><h3>Follow-up</h3><p>Quem chamar para conversar esta semana.</p></div></div><div class="grid3">
     <div class="fu"><h4><i data-lucide="target"></i>Sem captação qualificada<span class="c">${semCap.length}</span></h4><p class="d">Corretores de venda que ainda não pontuaram na gincana.</p>
       ${semCap.length?`<ul>${semCap.map(a=>li(a.nome,a.nq?q1(a.nq)+' não qualif.':'0')).join('')}</ul>`:'<div class="none">Todo mundo já pontuou.</div>'}</div>
     <div class="fu"><h4><i data-lucide="clock"></i>Parados há 7+ dias<span class="c">${parados.length}</span></h4><p class="d">Já captaram, mas a última captação foi há uma semana ou mais.</p>
@@ -1977,15 +1978,15 @@ function renderCaptacao(){
   for(let i=0;i<total;i++){const d=new Date(ini.getTime()+i*DAY), s=d.toISOString().slice(0,10), n=byDay[s]||0, fut=d>hoje, wk=d.getDay()==0||d.getDay()==6, td=s==C.hoje;
     const nq=byQ[s]||0, hT=fut?6:Math.max(2,n/mD*100), hQ=n?hT*nq/n:0;
     bars+=`<div class="b ${fut?'fut':''} ${wk?'wk':''} ${td?'today':''}" title="${br(s)}: ${n} captação(ões), ${nq} qualificada(s)">${n?`<span class="n">${nq}${n>nq?'<span style="color:var(--g500);font-weight:400">+'+(n-nq)+'</span>':''}</span>`:''}<i class="nq" style="height:${hT-hQ}%;${n?'':'display:none'}"></i><i style="height:${n?hQ:hT}%;${n&&!nq?'display:none':''}"></i></div>`;}
-  h+=`<div class="card tl"><div class="cp-head"><div><h3>dia a dia</h3><p>Captações pelo dia em que o imóvel entrou na pauta. Laranja: qualificadas. Bege: não pontuam.</p></div></div>
+  h+=`<div class="card tl"><div class="cp-head"><div><h3>Dia a dia</h3><p>Captações pelo dia em que o imóvel entrou na pauta. Laranja: qualificadas. Bege: não pontuam.</p></div></div>
     <div class="tl-bars">${bars}</div><div class="tl-x"><span>${br(C.inicio)}</span><span>${br(new Date(ini.getTime()+Math.floor(total/2)*DAY).toISOString().slice(0,10))}</span><span>${br(C.fim)}</span></div></div>`;
   // regras
-  h+=`<div class="cp-head"><div><h3>como conta</h3></div></div><div class="rules">
-    <div class="rule" style="grid-column:1/-1"><b>o que é captação qualificada</b>Imóvel de venda que entra na pauta entre ${br(C.inicio)} e ${br(C.fim)}: cadastro novo, ou imóvel antigo que volta a ficar ativo depois de pelo menos 60 dias fora (recaptação). Precisa estar em um destes bairros: <b style="display:inline;font-family:inherit;font-size:inherit;text-transform:none">${C.regra.a.join(', ')}</b>. Ou nestes, desde que acima de R$ 350 mil: <b style="display:inline;font-family:inherit;font-size:inherit;text-transform:none">${C.regra.b.join(', ')}</b>. Captações fora disso aparecem no painel, mas não pontuam. Sócios e contas da empresa não participam nem entram nos totais.</div>
-    <div class="rule"><b>captação dividida</b>Imóvel com dois ou mais captadores divide a captação e o VGV em partes iguais.</div>
-    <div class="rule"><b>ticket médio</b>VGV qualificado dividido pelo número de captações qualificadas de cada corretor.</div>
-    <div class="rule"><b>leads</b>Soma dos leads que cada captação qualificada gerou no ZAP, Chaves na Mão, Imóveis SC e site desde que entrou na campanha (numa recaptação, leads antigos do anúncio não contam). Imóvel dividido divide os leads também.</div>
-    <div class="rule"><b>uma vez captado, conta</b>Se o imóvel sair do Kenlo depois (vendido, por exemplo), a captação continua valendo.</div></div>`;
+  h+=`<div class="cp-head"><div><h3>Como conta</h3></div></div><div class="rules">
+    <div class="rule" style="grid-column:1/-1"><b>O que é captação qualificada</b>Imóvel de venda que entra na pauta entre ${br(C.inicio)} e ${br(C.fim)}: cadastro novo, ou imóvel antigo que volta a ficar ativo depois de pelo menos 60 dias fora (recaptação). Precisa estar em um destes bairros: <b style="display:inline;font-family:inherit;font-size:inherit;text-transform:none">${C.regra.a.join(', ')}</b>. Ou nestes, desde que acima de R$ 350 mil: <b style="display:inline;font-family:inherit;font-size:inherit;text-transform:none">${C.regra.b.join(', ')}</b>. Captações fora disso aparecem no painel, mas não pontuam. Sócios e contas da empresa não participam nem entram nos totais.</div>
+    <div class="rule"><b>Captação dividida</b>Imóvel com dois ou mais captadores divide a captação e o VGV em partes iguais.</div>
+    <div class="rule"><b>Ticket médio</b>VGV qualificado dividido pelo número de captações qualificadas de cada corretor.</div>
+    <div class="rule"><b>Leads</b>Soma dos leads que cada captação qualificada gerou no ZAP, Chaves na Mão, Imóveis SC e site desde que entrou na campanha (numa recaptação, leads antigos do anúncio não contam). Imóvel dividido divide os leads também.</div>
+    <div class="rule"><b>Uma vez captado, conta</b>Se o imóvel sair do Kenlo depois (vendido, por exemplo), a captação continua valendo.</div></div>`;
   window.__cp={C,comp,fora,nAll,nCap,vgv,nLeads,tk,dia,total,falta,started,proj,ritmo,byDay,byQ,ini,hoje,DAY,br,q1,mi};
   root.innerHTML=h;
   root.querySelector('.cp-pdf').onclick=exportCaptPdf;
