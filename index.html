@@ -440,6 +440,25 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
 .crep-zero .h span{font-size:9.5pt;color:#4a4640}
 .crep-zero .ch{display:flex;flex-wrap:wrap;gap:2mm}
 .crep-zero .ch span{font-size:10.5pt;background:#f1ece3;border-radius:5mm;padding:1mm 3.2mm;color:#1e1b35}
+.crep-bot2{display:grid;grid-template-columns:1.25fr 1fr;gap:3.5mm;margin-bottom:5mm}
+.crep-box{background:#fff;border:1px solid #e8e4dc;border-radius:3mm;padding:3.2mm 4mm}
+.crep-box h4{font-family:"Oswald";font-weight:500;font-size:13pt;margin:0 0 1.5mm;line-height:1.1}
+.crep-box p{margin:0;font-size:9pt;color:#1e1b35;line-height:1.4}.crep-box p span{color:#4a4640}
+.crep-chh{display:flex;justify-content:space-between;align-items:baseline}
+.crep-chh .lg{font-size:7.5pt;color:#4a4640;display:flex;align-items:center;gap:1.2mm}
+.crep-chh .lg i{display:inline-block;width:2.4mm;height:2.4mm;border-radius:.5mm;background:#ff9e36}.crep-chh .lg i.n{background:#ddd2bf;margin-left:2mm}
+.crep-ch2{display:flex;align-items:flex-end;gap:.7mm;height:21mm;margin-top:4.5mm;border-bottom:1px solid #e8e4dc}
+.crep-ch2 .b{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;position:relative}
+.crep-ch2 .b .v{position:absolute;left:50%;transform:translateX(-50%);font-size:7pt;font-weight:700;color:#1e1b35;white-space:nowrap}
+.crep-ch2 .b i{display:block}
+.crep-ch2 .b .qq{background:#ff9e36;border-radius:0}.crep-ch2 .b .nn{background:#ddd2bf;border-radius:.6mm .6mm 0 0}
+.crep-ch2 .b .nn[style*="height:0%"]+.qq{border-radius:.6mm .6mm 0 0}
+.crep-ch2 .b .zz{height:.6mm;background:#e8e4dc}
+.crep-ch2 .b .ff{height:100%;background:repeating-linear-gradient(0deg,#f6f3ee 0 1mm,transparent 1mm 2mm);opacity:.9}
+.crep-ch2 .b.td::after{content:"hoje";position:absolute;bottom:-4mm;left:50%;transform:translateX(-50%);font-size:6.5pt;font-weight:700;color:#e97f0f}
+.crep-chx2{display:flex;gap:.7mm;margin-top:1.2mm}.crep-chx2 span{flex:1;font-size:6.8pt;color:#4a4640;white-space:nowrap;overflow:visible}
+.crep-pace{margin-top:2.6mm;font-size:9pt;color:#4a4640}
+.crep-pace b{color:#1e1b35}.crep-pace .up{color:#1f6b45}.crep-pace .dn{color:#9e2b2b}.crep-pace .eq{color:#7a5a0e}
 .crep-rule{background:#fff;border:1px solid #e8e4dc;border-left:0;border-radius:3mm;padding:3.2mm 4mm;margin-bottom:5mm;display:grid;grid-template-columns:30mm 1fr;gap:4mm;align-items:start}
 .crep-rule h4{font-family:"Oswald";font-weight:500;font-size:14pt;margin:0;line-height:1.1}
 .crep-rule p{margin:0;font-size:9.5pt;color:#1e1b35;line-height:1.45}
@@ -1836,6 +1855,19 @@ function buildCaptReport(){
   const mD=Math.max(1,...Object.values(byDay));let ch='';
   for(let i=0;i<total;i++){const d=new Date(ini.getTime()+i*DAY),s=d.toISOString().slice(0,10),n=byDay[s]||0,q=byQ[s]||0,fut=d>hoje;
     ch+=fut?'<i class="f" style="height:8%"></i>':n?`<i style="height:${n/mD*100}%;background:linear-gradient(to top,#ff9e36 ${q/n*100}%,#ddd2bf ${q/n*100}%)"></i>`:'<i style="height:3%;background:#e8e4dc"></i>';}
+  const isZ=P.isZ, dq={}, dn={};
+  C.itens.forEach(it=>{const sh=it.captadores.filter(n=>!isZ(n)).length/it.captadores.length;if(!sh)return;(it.qualif?dq:dn)[it.data]=((it.qualif?dq:dn)[it.data]||0)+sh;});
+  const ds=[];for(let i=0;i<total;i++){const d=new Date(ini.getTime()+i*DAY);ds.push({s:d.toISOString().slice(0,10),d,fut:d>hoje,wk:d.getDay()==0||d.getDay()==6});}
+  const mx=Math.max(1,...ds.map(x=>(dq[x.s]||0)+(dn[x.s]||0)));
+  const chBars=ds.map(x=>{const q=dq[x.s]||0,n=dn[x.s]||0,tt=q+n,hq=q/mx*100,hn=n/mx*100,td=x.s==C.hoje;
+    return `<div class="b${x.fut?' f':''}${td?' td':''}">${tt?`<span class="v" style="bottom:calc(${(tt/mx*100).toFixed(1)}% + .6mm)">${q1(tt)}</span>`:''}${x.fut?'<i class="ff"></i>':`<i class="nn" style="height:${hn}%"></i><i class="qq" style="height:${hq}%"></i>`}${tt||x.fut?'':'<i class="zz"></i>'}</div>`;}).join('');
+  const chX=ds.map((x,i)=>`<span>${(i%5==0||i==total-1)?br(x.s):''}</span>`).join('');
+  const passados=ds.filter(x=>x.d<hoje), qd=passados.map(x=>dq[x.s]||0), med=qd.length?qd.reduce((a,b)=>a+b,0)/qd.length:0;
+  const ult=qd.slice(-3), mu=ult.length?ult.reduce((a,b)=>a+b,0)/ult.length:0;
+  let pace;
+  if(qd.length<4)pace=`Média de <b>${q1(med)} captações qualificadas por dia</b> até agora. A comparação de ritmo aparece a partir do 5º dia.`;
+  else{const dif=med?(mu-med)/med:0, tag=dif>0.1?'<b class="up">▲ acelerando</b>':dif<-0.1?'<b class="dn">▼ desacelerando</b>':'<b class="eq">● ritmo estável</b>';
+    pace=`${tag} Últimos 3 dias: <b>${q1(mu)}/dia</b> · média da campanha: <b>${q1(med)}/dia</b> <span style="color:#6f6a62">(dias completos)</span>`;}
   const hojeTxt=br(C.hoje)+'/'+C.hoje.slice(0,4);
   document.getElementById('capt-report').innerHTML=`<div class="crep"><div class="crep-in">
     <div class="crep-hd"><div class="crep-bars"><span></span><span></span><span></span></div>
@@ -1863,7 +1895,12 @@ function buildCaptReport(){
       <div class="crep-sec"><h3>Onde cada um está</h3><span>Todos os corretores · n/q = captação que não pontua</span></div>
       ${RT.length?`<table class="crep-tb"><thead><tr><th style="width:9mm">#</th><th>Corretor</th><th>Qualificadas</th><th class="r">VGV</th><th class="r">Ticket</th><th class="r">Leads</th><th>Última</th><th>Situação</th></tr></thead><tbody>${rows}</tbody></table>`:''}
       ${zer.length?`<div class="crep-zero"><div class="h"><b>Ainda na largada</b><span>${zer.length} ${zer.length==1?'corretor ainda não pontuou':'corretores ainda não pontuaram'}. A primeira captação qualificada já coloca no ranking.</span></div><div class="ch">${zer.map(a=>`<span>${a.nome}</span>`).join('')}</div></div>`:''}
-      <div class="crep-rule"><h4>O que pontua</h4><p><b>Imóvel de venda que entra na pauta</b> no período: cadastro novo ou recaptação (60+ dias fora). Bairros: <b>${C.regra.a.join(', ')}</b>. <span>Em ${C.regra.b.join(', ')}, só acima de R$ 350 mil. Dois captadores dividem meio a meio.</span></p></div>
+      <div class="crep-bot2">
+        <div class="crep-box"><div class="crep-chh"><h4>Captações por dia</h4><span class="lg"><i></i>qualificadas <i class="n"></i>não pontuam</span></div>
+          <div class="crep-ch2">${chBars}</div><div class="crep-chx2">${chX}</div>
+          <div class="crep-pace">${pace}</div></div>
+        <div class="crep-box"><h4>O que pontua</h4><p><b>Imóvel de venda que entra na pauta</b> no período: cadastro novo ou recaptação (60+ dias fora).</p><p style="margin-top:1.5mm">Bairros: <b>${C.regra.a.join(', ')}</b>.</p><p style="margin-top:1.5mm"><span>Em ${C.regra.b.join(', ')}, só acima de R$ 350 mil. Dois captadores dividem meio a meio.</span></p></div>
+      </div>
     </div></div>
     <div class="crep-ft"><span><b>Painel de Pauta ZELT</b> · aba Captação</span><span>Bora captar! Faltam ${started?falta:total} dias.</span></div>
   </div>`;
@@ -1995,7 +2032,7 @@ function renderCaptacao(){
     <div class="rule"><b>Ticket médio</b>VGV qualificado dividido pelo número de captações qualificadas de cada corretor.</div>
     <div class="rule"><b>Leads</b>Soma dos leads que cada captação qualificada gerou no ZAP, Chaves na Mão, Imóveis SC e site desde que entrou na campanha (numa recaptação, leads antigos do anúncio não contam). Imóvel dividido divide os leads também.</div>
     <div class="rule"><b>Uma vez captado, conta</b>Se o imóvel sair do Kenlo depois (vendido, por exemplo), a captação continua valendo.</div></div>`;
-  window.__cp={C,comp,fora,nAll,nCap,vgv,nLeads,tk,dia,total,falta,started,proj,ritmo,byDay,byQ,ini,hoje,DAY,br,q1,mi};
+  window.__cp={isZ,C,comp,fora,nAll,nCap,vgv,nLeads,tk,dia,total,falta,started,proj,ritmo,byDay,byQ,ini,hoje,DAY,br,q1,mi};
   root.innerHTML=h;
   root.querySelector('.cp-pdf').onclick=exportCaptPdf;
   root.querySelectorAll('.cp-tog button').forEach(b=>b.onclick=()=>{cpMode=b.dataset.m;renderCaptacao();});
