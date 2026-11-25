@@ -466,6 +466,99 @@ transform:translateX(100%);transition:transform .28s cubic-bezier(.16,1,.3,1);bo
 .crep-rule p span{color:#4a4640}
 .crep-ft{position:absolute;left:0;right:0;bottom:0;background:#1e1b35;color:rgba(250,248,244,.85);padding:3mm 11mm;display:flex;justify-content:space-between;align-items:center;font-size:10pt}
 .crep-ft b{color:#ff9e36}
+/* ==== PDF da Corrida: layout aprovado (Proposta 4, 25/11/2026) ==== */
+/* PROPOSTA 2: mesmo PDF, mesma página A4. Só espaços mais justos e letras maiores (o PDF quase não encolhe mais). */
+.crep-hd{padding:5mm 11mm 4.6mm}
+.crep-bars{height:16mm}
+.crep-top img{height:8mm}
+.crep-top .up{font-size:9pt}.crep-top .up b{font-size:11pt}
+.crep-hgrid{grid-template-columns:1fr 50mm;gap:6mm;margin-top:2.6mm}
+.crep-ey{font-size:9pt;margin:0 0 1mm}
+.crep-t{font-size:29pt}
+.crep-rail{margin-top:3.4mm}
+.crep-rail .l{font-size:9pt;margin-bottom:1.6mm}
+.crep-rail .r{height:2.2mm}.crep-rail .r b{width:4.4mm;height:4.4mm;border-width:1mm}
+.crep-cnt{padding:2.4mm 4mm 2.8mm;border-radius:3.5mm}
+.crep-cnt .n{font-size:46pt}
+.crep-cnt .l{font-size:11.5pt;margin-top:.6mm}
+.crep-cnt .s{font-size:8.5pt;margin-top:.8mm}
+.crep-body{padding:4mm 11mm 0}
+.crep-sec{margin:0 0 1.8mm}
+.crep-sec h3{font-size:14.5pt;gap:1.8mm}
+.crep-sec h3::before{width:3.3mm;height:4.3mm}
+.crep-sec span{font-size:8.5pt}
+.crep-kpis{gap:2.6mm;margin-bottom:3.6mm}
+.crep-k{padding:2.2mm 2mm;border-radius:2.6mm}
+.crep-k .v{font-size:22pt}
+.crep-k .l{font-size:8.8pt;margin-top:.8mm;line-height:1.2}
+.crep-pod{gap:2.6mm;margin-bottom:3.6mm}
+.crep-pd{padding:2.4mm 2.6mm 2.2mm;border-radius:2.6mm}
+.crep-pd.p1{padding:5mm 2.6mm 2.4mm}
+.crep-pd .md{width:7.4mm;height:7.4mm;font-size:10pt}
+.crep-pd .md.m1{width:8.4mm;height:8.4mm;font-size:11pt}
+.crep-pd .md svg{top:-3.8mm;width:4.2mm;height:4.2mm}
+.crep-pd .nm{font-size:11pt;margin-top:1.2mm}
+.crep-pd.p1 .nm{font-size:12pt}
+.crep-pd .bg{font-size:31pt;margin-top:.6mm}
+.crep-pd.p1 .bg{font-size:40pt}
+.crep-pd .bl{font-size:8.3pt;margin-top:0}
+.crep-pd .st{margin-top:1.8mm;padding-top:1.6mm}
+.crep-pd .st span{font-size:7pt;letter-spacing:.05em}
+.crep-pd .st b{font-size:12.5pt;margin-top:.2mm}
+.crep-tb{font-size:9.8pt;margin-bottom:3.6mm;border-radius:2.6mm}
+.crep-tb th{font-size:7.8pt;padding:1.5mm 2mm}
+.crep-tb td{padding:.75mm 2mm}
+.crep-tb .pos{width:5.6mm;height:5.6mm;font-size:9pt}
+.crep-tb .nm{font-size:10pt}
+.crep-tb .qb{gap:1.6mm}
+.crep-tb .qb .t{width:17mm;height:2.2mm}
+.crep-tb .qb b{font-size:14.5pt;font-weight:600;min-width:6mm;line-height:1}
+.crep-tb .qb small{font-size:7.8pt}
+.crep-tb .mn{font-size:12pt;font-weight:500}
+.crep-tb .st{font-size:8pt;padding:.4mm 1.8mm}
+.crep-bot2{gap:2.6mm;margin-bottom:0}
+.crep-box{padding:2.4mm 3.4mm 2.6mm;border-radius:2.6mm}
+.crep-box h4{font-size:12pt;margin:0 0 1mm}
+.crep-box p{font-size:8.4pt;line-height:1.35}
+.crep-chh .lg{font-size:7.8pt}
+.crep-ch2{height:15mm;margin-top:4mm}
+.crep-ch2 .b .v{font-size:7.8pt}
+.crep-ch2 .b.td::after{font-size:7.2pt;bottom:-4.2mm}
+.crep-chx2{margin-top:1mm}.crep-chx2 span{font-size:7.6pt}
+.crep-pace{margin-top:2mm;font-size:8.6pt}
+.crep-ft{padding:2.4mm 11mm;font-size:9pt}
+/* passo 2: menos sobra vertical */
+.crep-tb{line-height:1.15}
+.crep-tb td{padding:.42mm 2mm}
+.crep-tb .pos{width:5.2mm;height:5.2mm}
+.crep-tb .qb b{font-size:14pt}
+.crep-pd.p1{padding:4.2mm 2.6mm 2.2mm}
+.crep-pd .md{width:7mm;height:7mm}
+.crep-pd .md.m1{width:8mm;height:8mm}
+.crep-pd .bg{font-size:30pt}
+.crep-pd.p1 .bg{font-size:37pt}
+.crep-pd .nm{margin-top:1mm}
+.crep-pd .st{margin-top:1.4mm;padding-top:1.3mm}
+.crep-hd{padding:4.6mm 11mm 4.2mm}
+.crep-cnt .n{font-size:43pt}
+.crep-hgrid{margin-top:2mm}
+.crep-ch2{height:13mm;margin-top:3.6mm}
+.crep-pace{margin-top:1.6mm}
+.crep-bot2{grid-template-columns:1.2fr 1fr}
+/* "hoje" não fica mais por cima da data: coluna destacada e rótulo no alto */
+.crep-ch2 .b.td{background:rgba(255,158,54,.13);border-radius:.6mm .6mm 0 0}
+.crep-ch2 .b.td::after{top:-3.8mm;bottom:auto}
+/* proposta 3: meta de 10 */
+.crep-tb .st.go{background:#fff0dc;color:#9a5300}
+.crep-tb .sx{display:inline-block;margin-left:1.6mm;font-size:7.8pt;color:#6f6a62;white-space:nowrap}
+.crep-tb .sx.bad{color:#9e2b2b;font-weight:700}
+/* proposta 4 */
+.crep-tb th.c,.crep-tb td.c{text-align:center}
+.crep-k.hl{background:#1e1b35;border-color:#1e1b35}
+.crep-k.hl .v{color:#ff9e36;font-size:25pt}
+.crep-k.hl .l{color:rgba(250,248,244,.9);font-weight:700}
+.crep-k:first-child .v{font-size:25pt}
+
 @media print{
   body.captrep-mode > *:not(#capt-report){display:none!important}
   body.captrep-mode #capt-report{display:block!important}
@@ -1840,17 +1933,17 @@ function buildCaptReport(){
     return `<div class="crep-pd ${p==1?'p1':''}">${md}<div class="nm">${a.nome}</div>
       <div class="bg">${q1(a.qtd)}</div><div class="bl">${a.qtd==1?'captação qualificada':'captações qualificadas'}</div>
       <div class="st"><div><span>VGV</span><b>${mi(a.vgv)}</b></div><div><span>Ticket</span><b>${mi(a.ticket)}</b></div><div><span>Leads</span><b>${q1(a.lq)}</b></div></div></div>`;};
-  const mQ=Math.max(1,...R.map(a=>a.qtd));
+  const META=10, mQ=META;
   const zer=[], RT=R;
   const rows=RT.map((a,i)=>{
     const pos=a.qtd?i+1:'–', top=a.qtd&&i<3;
     let st;
-    if(!a.qtd)st=a.nq?'<span class="st wait">só não qualificadas</span>':'<span class="st wait">ainda não pontuou</span>';
-    else if(a.dias>=7)st=`<span class="st bad">parado há ${a.dias} dias</span>`;
-    else st='<span class="st ok">em dia</span>';
+    const mt=a.qtd>=META?'<span class="st ok">✓ Meta batida</span>':`<span class="st go">Faltam ${q1(META-a.qtd)}</span>`;if(!a.qtd)st=mt+(a.nq?'<small class="sx">só não qualificadas</small>':'<small class="sx">ainda não pontuou</small>');
+    else if(a.dias>=7)st=mt+`<small class="sx bad">parado há ${a.dias} dias</small>`;
+    else st=mt;
     return `<tr class="${a.qtd?'':'z'} ${top?'t3':''}"><td><span class="pos ${top?'g'+(i+1):''}">${pos}</span></td><td class="nm">${a.nome}</td>
-      <td><div class="qb"><span class="t"><i style="width:${a.qtd/mQ*100}%"></i></span><b>${q1(a.qtd)}</b>${a.nq?`<small>+${q1(a.nq)} n/q</small>`:''}</div></td>
-      <td class="r mn">${a.vgv?mi(a.vgv):'—'}</td><td class="r mn">${a.qtd?mi(a.ticket):'—'}</td><td class="r mn">${a.qtd?q1(a.lq):'—'}</td>
+      <td><div class="qb"><span class="t"><i style="width:${Math.min(100,a.qtd/mQ*100)}%"></i></span><b>${q1(a.qtd)}</b>${a.nq?`<small>+${q1(a.nq)} n/q</small>`:''}</div></td>
+      <td class="r mn">${a.vgv?mi(a.vgv):'—'}</td><td class="r mn">${a.qtd?mi(a.ticket):'—'}</td><td class="c mn">${a.qtd?q1(a.lq):'—'}</td>
       <td>${a.ult?br(a.ult):'—'}</td><td>${st}</td></tr>`;}).join('');
   const mD=Math.max(1,...Object.values(byDay));let ch='';
   for(let i=0;i<total;i++){const d=new Date(ini.getTime()+i*DAY),s=d.toISOString().slice(0,10),n=byDay[s]||0,q=byQ[s]||0,fut=d>hoje;
@@ -1885,21 +1978,21 @@ function buildCaptReport(){
     <div class="crep-body">
       <div class="crep-sec"><h3>O time até agora</h3><span>Só captações qualificadas</span></div>
       <div class="crep-kpis">
-        <div class="crep-k"><div class="v">${mi(vgv)}</div><div class="l">VGV captado</div></div>
+        <div class="crep-k"><div class="v">${mi(vgv)}</div><div class="l">VGV captado</div></div><div class="crep-k hl"><div class="v">${q1(nLeads)}</div><div class="l">${nLeads==1?'lead gerado pelas captações':'leads gerados pelas captações'}</div></div>
         <div class="crep-k"><div class="v">${nCap?mi(tk):'—'}</div><div class="l">ticket médio</div></div>
-        <div class="crep-k"><div class="v">${q1(nLeads)}</div><div class="l">leads gerados${nCap?' · '+q1(nLeads/nCap)+' por captação':''}</div></div>
+        
         <div class="crep-k"><div class="v">${proj!=null?q1(proj):'—'}</div><div class="l">${proj!=null?'projeção até '+br(C.fim):'projeção a partir do 3º dia'}</div></div>
       </div>
       <div class="crep-sec"><h3>Pódio</h3><span>Por captações qualificadas · desempate pelo VGV</span></div>
       <div class="crep-pod">${pd(R[1],2)}${pd(R[0],1)}${pd(R[2],3)}</div>
-      <div class="crep-sec"><h3>Onde cada um está</h3><span>Todos os corretores · n/q = captação que não pontua</span></div>
-      ${RT.length?`<table class="crep-tb"><thead><tr><th style="width:9mm">#</th><th>Corretor</th><th>Qualificadas</th><th class="r">VGV</th><th class="r">Ticket</th><th class="r">Leads</th><th>Última</th><th>Situação</th></tr></thead><tbody>${rows}</tbody></table>`:''}
+      <div class="crep-sec"><h3>Onde cada um está</h3><span>Todos os corretores · meta: 10 qualificadas cada · n/q = captação que não pontua</span></div>
+      ${RT.length?`<table class="crep-tb"><thead><tr><th style="width:9mm">#</th><th>Corretor</th><th>Qualificadas</th><th class="r">VGV</th><th class="r">Ticket</th><th class="c">Leads</th><th>Última</th><th>Meta de 10</th></tr></thead><tbody>${rows}</tbody></table>`:''}
       ${zer.length?`<div class="crep-zero"><div class="h"><b>Ainda na largada</b><span>${zer.length} ${zer.length==1?'corretor ainda não pontuou':'corretores ainda não pontuaram'}. A primeira captação qualificada já coloca no ranking.</span></div><div class="ch">${zer.map(a=>`<span>${a.nome}</span>`).join('')}</div></div>`:''}
       <div class="crep-bot2">
         <div class="crep-box"><div class="crep-chh"><h4>Captações por dia</h4><span class="lg"><i></i>qualificadas <i class="n"></i>não pontuam</span></div>
           <div class="crep-ch2">${chBars}</div><div class="crep-chx2">${chX}</div>
           <div class="crep-pace">${pace}</div></div>
-        <div class="crep-box"><h4>O que pontua</h4><p><b>Imóvel de venda que entra na pauta</b> no período: cadastro novo ou recaptação (60+ dias fora).</p><p style="margin-top:1.5mm">Bairros: <b>${C.regra.a.join(', ')}</b>.</p><p style="margin-top:1.5mm"><span>${C.regra.b.length?`Em ${C.regra.b.join(', ')}, só acima de R$ ${Math.round(C.regra.min_b/1000)} mil. `:'Qualquer valor. '}Dois captadores dividem meio a meio.</span></p></div>
+        <div class="crep-box"><h4>O que pontua</h4><p><b>Meta: 10 captações qualificadas por corretor</b> até a chegada.</p><p style="margin-top:1.2mm"><b>Imóvel de venda que entra na pauta</b> no período: cadastro novo ou recaptação (60+ dias fora).</p><p style="margin-top:1.5mm">Bairros: <b>${C.regra.a.join(', ')}</b>.</p><p style="margin-top:1.5mm"><span>${C.regra.b.length?`Em ${C.regra.b.join(', ')}, só acima de R$ ${Math.round(C.regra.min_b/1000)} mil. `:'Qualquer valor. '}Dois captadores dividem meio a meio.</span></p></div>
       </div>
     </div></div>
     <div class="crep-ft"><span><b>Painel de Pauta ZELT</b> · aba Captação</span><span>Bora captar! Faltam ${started?falta:total} dias.</span></div>
